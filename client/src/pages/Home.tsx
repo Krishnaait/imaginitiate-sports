@@ -115,8 +115,8 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square bg-white/10 rounded-3xl backdrop-blur-sm flex items-center justify-center animate-float">
-                <Trophy className="h-48 w-48 text-white/80" />
+              <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl animate-float">
+                <img src="/cricketer-hero.jpg" alt="Cricket Player in Action" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>

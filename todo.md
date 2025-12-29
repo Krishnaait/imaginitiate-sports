@@ -116,3 +116,6 @@
 - [x] Generate brand logo for IMAGINITIATE
 - [x] Generate background banner image for hero section
 - [x] Integrate logo and banner into website
+
+## Hero Section Updates
+- [x] Replace trophy icon with real cricketer image
