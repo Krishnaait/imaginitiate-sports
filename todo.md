@@ -105,3 +105,6 @@
 ## Design Improvements & Bug Fixes
 - [x] Redesign disclaimer banner pattern (current design is too intrusive)
 - [x] Fix team names not showing on Matches page
+
+## Content Updates
+- [x] Update disclaimer banner to show actual names of 7 restricted states instead of "7 Indian States"

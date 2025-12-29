@@ -13,8 +13,8 @@ export function DisclaimerBanner() {
             </span>
             <span className="text-amber-400 dark:text-amber-600">•</span>
             <span className="flex items-center gap-1.5">
-              <span className="font-semibold">Geo-Restricted</span>
-              <span className="text-amber-700 dark:text-amber-300">7 Indian States</span>
+              <span className="font-semibold">Geo-Restricted:</span>
+              <span className="text-amber-700 dark:text-amber-300">Assam, Telangana, Tamil Nadu, Orissa, Andhra Pradesh, Nagaland, Sikkim</span>
             </span>
             <span className="text-amber-400 dark:text-amber-600">•</span>
             <span className="flex items-center gap-1.5">
