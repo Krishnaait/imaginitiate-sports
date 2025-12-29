@@ -100,4 +100,4 @@
 - [x] Test complete authentication flow
 
 ## Bug Fixes
-- [x] Fix nested anchor tag error in Layout component
+- [x] Fix persistent nested anchor tag error (Link wrapping Button creates nested anchors)

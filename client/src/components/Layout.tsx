@@ -53,17 +53,17 @@ export function Layout({ children }: LayoutProps) {
               Contact Us
             </Link>
             {isAuthenticated ? (
-              <Link href="/dashboard">
-                <Button size="sm">Dashboard</Button>
-              </Link>
+              <Button size="sm" asChild>
+                <Link href="/dashboard">Dashboard</Link>
+              </Button>
             ) : (
               <>
-                <Link href="/login">
-                  <Button size="sm" variant="outline">Login</Button>
-                </Link>
-                <Link href="/register">
-                  <Button size="sm">Register</Button>
-                </Link>
+                <Button size="sm" variant="outline" asChild>
+                  <Link href="/login">Login</Link>
+                </Button>
+                <Button size="sm" asChild>
+                  <Link href="/register">Register</Link>
+                </Button>
               </>
             )}
           </div>
