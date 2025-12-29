@@ -101,3 +101,7 @@
 
 ## Bug Fixes
 - [x] Fix persistent nested anchor tag error (Link wrapping Button creates nested anchors)
+
+## Design Improvements & Bug Fixes
+- [x] Redesign disclaimer banner pattern (current design is too intrusive)
+- [x] Fix team names not showing on Matches page

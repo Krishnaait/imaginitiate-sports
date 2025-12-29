@@ -8,24 +8,19 @@ const BASE_URL = "https://api.cricapi.com/v1";
 
 export interface CricketMatch {
   id: string;
-  name: string;
+  name?: string;
   matchType: string;
   status: string;
-  venue: string;
-  date: string;
+  venue?: string;
+  date?: string;
   dateTimeGMT: string;
-  teams: string[];
-  teamInfo?: Array<{
-    name: string;
-    img: string;
-    shortname: string;
-  }>;
-  score?: Array<{
-    r: number;
-    w: number;
-    o: number;
-    inning: string;
-  }>;
+  t1: string; // Team 1 name
+  t2: string; // Team 2 name
+  t1img?: string; // Team 1 image
+  t2img?: string; // Team 2 image
+  t1s?: string; // Team 1 score
+  t2s?: string; // Team 2 score
+  series?: string; // Series name
   ms?: string; // Match status: live, fixture, result
 }
 

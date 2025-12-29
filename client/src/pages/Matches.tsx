@@ -31,10 +31,10 @@ export default function Matches() {
       <CardHeader>
         <div className="flex items-start justify-between">
           <div className="space-y-1 flex-1">
-            <CardTitle className="text-lg">{match.name || 'Cricket Match'}</CardTitle>
+            <CardTitle className="text-lg">{match.series || match.name || 'Cricket Match'}</CardTitle>
             <CardDescription className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
-              {match.venue || 'Venue TBA'}
+              {match.venue || match.matchType?.toUpperCase() || 'Cricket'}
             </CardDescription>
           </div>
           {status === 'live' && (
@@ -65,22 +65,28 @@ export default function Matches() {
           <span className="text-sm text-muted-foreground">{match.matchType || 'T20'}</span>
         </div>
         
-        {match.teams && match.teams.length >= 2 && (
+        {match.t1 && match.t2 && (
           <div className="space-y-2">
-            <div className="flex items-center justify-between p-2 bg-muted/50 rounded">
-              <span className="font-medium">{match.teams[0]}</span>
-              {match.score && match.score[0] && (
-                <span className="text-sm font-semibold">
-                  {match.score[0].r}/{match.score[0].w} ({match.score[0].o})
-                </span>
+            <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+              <div className="flex items-center gap-2">
+                {match.t1img && (
+                  <img src={match.t1img} alt={match.t1} className="h-6 w-6 rounded-full object-cover" />
+                )}
+                <span className="font-medium">{match.t1}</span>
+              </div>
+              {match.t1s && (
+                <span className="text-sm font-semibold">{match.t1s}</span>
               )}
             </div>
-            <div className="flex items-center justify-between p-2 bg-muted/50 rounded">
-              <span className="font-medium">{match.teams[1]}</span>
-              {match.score && match.score[1] && (
-                <span className="text-sm font-semibold">
-                  {match.score[1].r}/{match.score[1].w} ({match.score[1].o})
-                </span>
+            <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+              <div className="flex items-center gap-2">
+                {match.t2img && (
+                  <img src={match.t2img} alt={match.t2} className="h-6 w-6 rounded-full object-cover" />
+                )}
+                <span className="font-medium">{match.t2}</span>
+              </div>
+              {match.t2s && (
+                <span className="text-sm font-semibold">{match.t2s}</span>
               )}
             </div>
           </div>

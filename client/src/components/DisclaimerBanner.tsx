@@ -1,15 +1,29 @@
-import { AlertCircle } from "lucide-react";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { ShieldCheck } from "lucide-react";
 
 export function DisclaimerBanner() {
   return (
-    <Alert className="rounded-none border-x-0 border-t-0 bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800">
-      <AlertCircle className="h-4 w-4 text-amber-600 dark:text-amber-500" />
-      <AlertDescription className="text-xs text-amber-800 dark:text-amber-300">
-        <strong>18+ Only:</strong> Users must be 18 years or older. |{" "}
-        <strong>Geo-Restricted:</strong> Not available in Assam, Telangana, Tamil Nadu, Orissa, Andhra Pradesh, Nagaland, Sikkim. |{" "}
-        <strong>Compliance:</strong> Operated under Indian laws and fantasy sports regulations.
-      </AlertDescription>
-    </Alert>
+    <div className="bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-amber-500/10 border-b border-amber-200/50 dark:border-amber-800/50">
+      <div className="container py-2">
+        <div className="flex items-center gap-3 text-xs">
+          <ShieldCheck className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0" />
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-amber-900 dark:text-amber-200">
+            <span className="flex items-center gap-1.5">
+              <span className="font-semibold">18+</span>
+              <span className="text-amber-700 dark:text-amber-300">Only</span>
+            </span>
+            <span className="text-amber-400 dark:text-amber-600">•</span>
+            <span className="flex items-center gap-1.5">
+              <span className="font-semibold">Geo-Restricted</span>
+              <span className="text-amber-700 dark:text-amber-300">7 Indian States</span>
+            </span>
+            <span className="text-amber-400 dark:text-amber-600">•</span>
+            <span className="flex items-center gap-1.5">
+              <span className="font-semibold">India Compliant</span>
+              <span className="text-amber-700 dark:text-amber-300">Fantasy Sports Regulations</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
