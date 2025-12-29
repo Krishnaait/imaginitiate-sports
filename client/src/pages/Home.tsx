@@ -22,12 +22,16 @@ export default function Home() {
             <a href="#features" className="text-sm font-medium hover:text-primary transition-colors">
               Features
             </a>
-            <a href="#how-it-works" className="text-sm font-medium hover:text-primary transition-colors">
-              How It Works
-            </a>
-            <a href="#matches" className="text-sm font-medium hover:text-primary transition-colors">
-              Matches
-            </a>
+            <Link href="/how-it-works">
+              <a className="text-sm font-medium hover:text-primary transition-colors">
+                How It Works
+              </a>
+            </Link>
+            <Link href="/matches">
+              <a className="text-sm font-medium hover:text-primary transition-colors">
+                Matches
+              </a>
+            </Link>
             <a href="#faq" className="text-sm font-medium hover:text-primary transition-colors">
               FAQ
             </a>
@@ -476,18 +480,21 @@ export default function Home() {
             <div>
               <h3 className="font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-sm">
-                <li><a href="#features" className="text-muted-foreground hover:text-primary">Features</a></li>
-                <li><a href="#how-it-works" className="text-muted-foreground hover:text-primary">How It Works</a></li>
-                <li><a href="#matches" className="text-muted-foreground hover:text-primary">Matches</a></li>
-                <li><a href="#faq" className="text-muted-foreground hover:text-primary">FAQ</a></li>
+                <li><Link href="/about"><a className="text-muted-foreground hover:text-primary">About Us</a></Link></li>
+                <li><Link href="/how-it-works"><a className="text-muted-foreground hover:text-primary">How It Works</a></Link></li>
+                <li><Link href="/fantasy-cricket"><a className="text-muted-foreground hover:text-primary">Fantasy Cricket</a></Link></li>
+                <li><Link href="/matches"><a className="text-muted-foreground hover:text-primary">Matches</a></Link></li>
+                <li><Link href="/fair-play"><a className="text-muted-foreground hover:text-primary">Fair Play</a></Link></li>
+                <li><Link href="/contact"><a className="text-muted-foreground hover:text-primary">Contact Us</a></Link></li>
               </ul>
             </div>
             <div>
               <h3 className="font-semibold mb-4">Legal</h3>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="text-muted-foreground hover:text-primary">Terms of Service</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-primary">Privacy Policy</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-primary">Responsible Gaming</a></li>
+                <li><Link href="/terms"><a className="text-muted-foreground hover:text-primary">Terms & Conditions</a></Link></li>
+                <li><Link href="/privacy"><a className="text-muted-foreground hover:text-primary">Privacy Policy</a></Link></li>
+                <li><Link href="/disclaimer"><a className="text-muted-foreground hover:text-primary">Disclaimer</a></Link></li>
+                <li><Link href="/responsible-gaming"><a className="text-muted-foreground hover:text-primary">Responsible Gaming</a></Link></li>
               </ul>
             </div>
           </div>

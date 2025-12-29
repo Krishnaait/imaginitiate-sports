@@ -72,3 +72,6 @@
 - [ ] Password reset functionality
 - [ ] Team creation backend
 - [ ] Contest management backend
+
+## Bug Fixes
+- [x] Fix pages not displaying - investigate routing and navigation issues
