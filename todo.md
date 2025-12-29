@@ -246,3 +246,12 @@
 - [x] Identify root cause: dist/index.js:788 still has old code with import.meta.dirname
 - [ ] Force clean rebuild by triggering new deployment
 - [ ] Verify website loads correctly after rebuild
+
+
+## Railway Persistent Build Error
+- [x] Investigate why dist/index.js:788 still has old code after rebuild
+- [x] Check Railway build command and configuration (esbuild bundling issue)
+- [x] Verify source code has correct __dirname fix (source is correct)
+- [x] Add esbuild banner to inject __dirname/__filename at bundle top
+- [x] Test build locally - __dirname now injected at top of dist/index.js
+- [ ] Push to GitHub and verify Railway deployment succeeds
