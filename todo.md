@@ -119,3 +119,6 @@
 
 ## Hero Section Updates
 - [x] Replace trophy icon with real cricketer image
+
+## Logo Fixes
+- [x] Fix brand logo visibility in navigation header

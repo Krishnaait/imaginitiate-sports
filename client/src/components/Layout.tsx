@@ -22,8 +22,9 @@ export function Layout({ children }: LayoutProps) {
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container flex h-16 items-center justify-between">
           <Link href="/">
-            <div className="flex items-center gap-2 cursor-pointer">
-              <img src="/logo.png" alt="IMAGINITIATE" className="h-10 w-auto" />
+            <div className="flex items-center gap-3 cursor-pointer">
+              <img src="/logo.png" alt="IMAGINITIATE" className="h-12 w-auto" />
+              <span className="font-bold text-2xl text-primary">IMAGINITIATE</span>
             </div>
           </Link>
           <div className="flex items-center gap-4 overflow-x-auto">
