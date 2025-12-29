@@ -186,7 +186,7 @@ export default function Privacy() {
                 <li><strong>Right to Withdraw Consent:</strong> Withdraw consent where processing is based on consent</li>
               </ul>
               <p className="text-muted-foreground mt-4">
-                To exercise these rights, please contact us at <a href="mailto:privacy@imanitiatesports.com" className="text-primary hover:underline">privacy@imanitiatesports.com</a>. We will respond to your request within 30 days.
+                To exercise these rights, please contact us at <a href="mailto:privacy@imaginitiatesports.com" className="text-primary hover:underline">privacy@imaginitiatesports.com</a>. We will respond to your request within 30 days.
               </p>
             </div>
 
@@ -236,9 +236,9 @@ export default function Privacy() {
                 <p><strong>IMAGINITIATE VENTURES PRIVATE LIMITED</strong></p>
                 <p>A-96 GROUND FLOOR, SHANKAR GARDEN VIKASPURI</p>
                 <p>NEW DELHI, East Delhi, Delhi, 110018</p>
-                <p>Email: <a href="mailto:privacy@imanitiatesports.com" className="text-primary hover:underline">privacy@imanitiatesports.com</a></p>
-                <p>General Support: <a href="mailto:support@imanitiatesports.com" className="text-primary hover:underline">support@imanitiatesports.com</a></p>
-                <p>Website: <a href="https://imanitiatesports.com" className="text-primary hover:underline">imanitiatesports.com</a></p>
+                <p>Email: <a href="mailto:privacy@imaginitiatesports.com" className="text-primary hover:underline">privacy@imaginitiatesports.com</a></p>
+                <p>General Support: <a href="mailto:support@imaginitiatesports.com" className="text-primary hover:underline">support@imaginitiatesports.com</a></p>
+                <p>Website: <a href="https://imaginitiatesports.com" className="text-primary hover:underline">imaginitiatesports.com</a></p>
               </div>
             </div>
 

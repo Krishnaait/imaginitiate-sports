@@ -217,8 +217,8 @@ export default function Terms() {
                 <p><strong>IMAGINITIATE VENTURES PRIVATE LIMITED</strong></p>
                 <p>A-96 GROUND FLOOR, SHANKAR GARDEN VIKASPURI</p>
                 <p>NEW DELHI, East Delhi, Delhi, 110018</p>
-                <p>Email: <a href="mailto:support@imanitiatesports.com" className="text-primary hover:underline">support@imanitiatesports.com</a></p>
-                <p>Website: <a href="https://imanitiatesports.com" className="text-primary hover:underline">imanitiatesports.com</a></p>
+                <p>Email: <a href="mailto:support@imaginitiatesports.com" className="text-primary hover:underline">support@imaginitiatesports.com</a></p>
+                <p>Website: <a href="https://imaginitiatesports.com" className="text-primary hover:underline">imaginitiatesports.com</a></p>
               </div>
             </div>
 

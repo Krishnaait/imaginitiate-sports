@@ -419,7 +419,7 @@ export default function ResponsibleGaming() {
                 <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
                   <li><strong>Talk to Someone:</strong> Share your concerns with a trusted friend, family member, or counselor</li>
                   <li><strong>Professional Help:</strong> Consider speaking with a mental health professional who specializes in behavioral issues</li>
-                  <li><strong>Contact Us:</strong> Reach out to our support team at <a href="mailto:support@imanitiatesports.com" className="text-primary hover:underline">support@imanitiatesports.com</a></li>
+                  <li><strong>Contact Us:</strong> Reach out to our support team at <a href="mailto:support@imaginitiatesports.com" className="text-primary hover:underline">support@imaginitiatesports.com</a></li>
                   <li><strong>Support Groups:</strong> Look for local or online support groups for gaming-related concerns</li>
                 </ul>
               </div>

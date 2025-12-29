@@ -90,12 +90,12 @@ export default function Contact() {
                   </CardHeader>
                   <CardContent className="text-muted-foreground">
                     <p className="mb-2">For general inquiries:</p>
-                    <a href="mailto:support@imanitiatesports.com" className="text-primary hover:underline">
-                      support@imanitiatesports.com
+                    <a href="mailto:support@imaginitiatesports.com" className="text-primary hover:underline">
+                      support@imaginitiatesports.com
                     </a>
                     <p className="mt-4 mb-2">For technical support:</p>
-                    <a href="mailto:tech@imanitiatesports.com" className="text-primary hover:underline">
-                      tech@imanitiatesports.com
+                    <a href="mailto:tech@imaginitiatesports.com" className="text-primary hover:underline">
+                      tech@imaginitiatesports.com
                     </a>
                   </CardContent>
                 </Card>
@@ -234,7 +234,7 @@ export default function Contact() {
       <footer className="border-t py-8 bg-muted/50">
         <div className="container text-center text-sm text-muted-foreground">
           <p>© 2024 IMAGINITIATE VENTURES PRIVATE LIMITED. All rights reserved.</p>
-          <p className="mt-2">imanitiatesports.com</p>
+          <p className="mt-2">imaginitiatesports.com</p>
         </div>
       </footer>
     </Layout>

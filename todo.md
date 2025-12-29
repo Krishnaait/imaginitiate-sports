@@ -122,3 +122,6 @@
 
 ## Logo Fixes
 - [x] Fix brand logo visibility in navigation header
+
+## Domain Update
+- [x] Update domain from imanitiatesports.com to imaginitiatesports.com

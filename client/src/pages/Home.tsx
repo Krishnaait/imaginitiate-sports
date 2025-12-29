@@ -521,7 +521,7 @@ export default function Home() {
           </div>
           <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
             <p>© 2024 IMAGINITIATE VENTURES PRIVATE LIMITED. All rights reserved.</p>
-            <p className="mt-2">imanitiatesports.com - Free-to-play skill-based fantasy cricket platform.</p>
+            <p className="mt-2">imaginitiatesports.com - Free-to-play skill-based fantasy cricket platform.</p>
             <div className="mt-6 p-4 bg-amber-50 dark:bg-amber-950/20 rounded-lg border border-amber-200 dark:border-amber-800">
               <p className="text-amber-800 dark:text-amber-300 font-semibold mb-2">Important Disclaimers:</p>
               <ul className="text-xs text-amber-700 dark:text-amber-400 space-y-1">

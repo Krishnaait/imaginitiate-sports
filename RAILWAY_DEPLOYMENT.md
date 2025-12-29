@@ -94,7 +94,7 @@ Make sure your `package.json` has:
 ### 7. Custom Domain (Optional)
 1. Go to Settings → Domains in Railway dashboard
 2. Click "Add Domain"
-3. Add your custom domain: `imanitiatesports.com`
+3. Add your custom domain: `imaginitiatesports.com`
 4. Update DNS records as instructed by Railway
 
 ## Important Notes
