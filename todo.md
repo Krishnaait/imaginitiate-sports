@@ -23,9 +23,9 @@
 ## User Features
 - [x] User authentication (login/register)
 - [x] User dashboard
-- [ ] Team creation interface
-- [ ] Team management
-- [ ] Contest participation
+- [x] Team creation interface
+- [x] Team management
+- [x] Contest participation
 
 ## Design & Polish
 - [x] Brand colors and styling
@@ -35,5 +35,40 @@
 
 ## Testing & Deployment
 - [x] Test all features
-- [ ] Create checkpoint
-- [ ] Documentation
+- [x] Create checkpoint
+- [x] Documentation
+
+## New Pages to Create
+
+### Informational Pages
+- [x] About page (Our Story, Mission & Vision, Why We're Free, Fair Play Gaming, Do's and Don'ts)
+- [x] How It Works page (How to Play, Create Team, Score System, Leaderboard Rankings)
+- [x] Fantasy Cricket page
+- [x] Fair Play page
+- [x] Contact Us page
+- [x] Responsible Gaming page (detailed points)
+
+### Legal Pages
+- [x] Terms & Conditions page
+- [x] Privacy Policy page
+- [x] Disclaimer & Compliance page
+
+### Team & Contest Management
+- [x] Create Team page
+- [x] Contest page (browse and join contests)
+- [x] My Teams page
+- [x] Results page
+
+### User Management
+- [x] Profile page
+- [x] Login page (uses Manus OAuth)
+- [x] Register page (uses Manus OAuth - saves data in database)
+- [x] Forgot Password page (handled by Manus OAuth)
+- [x] Logout functionality (already implemented)
+
+### Backend Features
+- [ ] Registration process with data validation
+- [ ] Login process with authentication
+- [ ] Password reset functionality
+- [ ] Team creation backend
+- [ ] Contest management backend
