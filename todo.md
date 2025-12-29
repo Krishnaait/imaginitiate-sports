@@ -98,3 +98,6 @@
 - [x] Update authentication context to use custom auth
 - [x] Remove all Manus OAuth references from codebase
 - [x] Test complete authentication flow
+
+## Bug Fixes
+- [x] Fix nested anchor tag error in Layout component

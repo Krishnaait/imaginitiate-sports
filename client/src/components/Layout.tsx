@@ -58,12 +58,12 @@ export function Layout({ children }: LayoutProps) {
               </Link>
             ) : (
               <>
-                <a href={getLoginUrl()}>
+                <Link href="/login">
                   <Button size="sm" variant="outline">Login</Button>
-                </a>
-                <a href={getLoginUrl()}>
+                </Link>
+                <Link href="/register">
                   <Button size="sm">Register</Button>
-                </a>
+                </Link>
               </>
             )}
           </div>
