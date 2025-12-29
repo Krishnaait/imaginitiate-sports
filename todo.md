@@ -221,3 +221,14 @@
 
 ## Bug Fixes
 - [x] Fix nested anchor tag error in Home.tsx (Link wrapping <a> tags)
+
+
+## Remove Money/Prize Content
+- [x] Search for all money/cash/prize references across website
+- [x] Update Home page - remove prize/money mentions (₹10L+ → 100K+ Active Players, "win big" → "earn recognition")
+- [x] Update About page - remove "paid advantages" reference
+- [x] Update HowItWorks page - remove "winning teams" reference
+- [x] Update FairPlay page - remove "paid advantages" reference
+- [x] Update database schema - already clean, no entryFee or prizePool fields exist
+- [x] Update Contests page UI to remove entry fee display (no entry fees in UI)
+- [x] Fix Home.tsx syntax error causing Vite build failure (server restarted successfully)

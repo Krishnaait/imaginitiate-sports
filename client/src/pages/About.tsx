@@ -169,7 +169,7 @@ export default function About() {
                 <CardTitle>Equal Opportunities for All</CardTitle>
               </CardHeader>
               <CardContent className="text-muted-foreground">
-                Every user has access to the same information, features, and opportunities. There are no premium tiers, no paid advantages, and no shortcuts. Success on IMAGINITIATE is determined solely by your cricket knowledge and strategic decisions, ensuring a level playing field for everyone.
+                Every user has access to the same information, features, and opportunities. There are no premium tiers, no advantages, and no shortcuts. Success on IMAGINITIATE is determined solely by your cricket knowledge and strategic decisions, ensuring a level playing field for everyone.
               </CardContent>
             </Card>
 

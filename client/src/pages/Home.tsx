@@ -175,7 +175,7 @@ export default function Home() {
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2 text-white">Join Contests</h3>
                 <p className="text-gray-400 text-sm">
-                  Enter free or paid contests. Compete with thousands of players for exciting prizes.
+                  Join free contests and compete with thousands of players to climb the leaderboard.
                 </p>
               </div>
             </Card>
@@ -207,9 +207,9 @@ export default function Home() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-white">Win Big Prizes</h3>
+                <h3 className="text-xl font-bold mb-2 text-white">Earn Recognition</h3>
                 <p className="text-gray-400 text-sm">
-                  Top performers win cash prizes, rewards, and exclusive merchandise.
+                  Top performers earn recognition, achievements, and leaderboard glory.
                 </p>
               </div>
             </Card>
@@ -259,8 +259,8 @@ export default function Home() {
               <div className="text-gray-400">Daily Contests</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-2">₹10L+</div>
-              <div className="text-gray-400">Prizes Won</div>
+              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-2">100K+</div>
+              <div className="text-gray-400">Active Players</div>
             </div>
             <div>
               <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-2">4.8★</div>
@@ -316,7 +316,7 @@ export default function Home() {
             START PLAYING TODAY
           </h2>
           <p className="text-xl text-gray-300 mb-8">
-            Join thousands of cricket fans and start winning
+            Join thousands of cricket fans and showcase your skills
           </p>
           <Link href="/register">
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 text-lg px-12 py-6">
@@ -337,7 +337,7 @@ export default function Home() {
                 <span className="text-xl font-bold text-emerald-400">IMAGINITIATE</span>
               </div>
               <p className="text-gray-400 text-sm">
-                India's most trusted fantasy cricket platform. Play responsibly and win big.
+                India's most trusted fantasy cricket platform. Play for fun, compete for glory.
               </p>
             </div>
 

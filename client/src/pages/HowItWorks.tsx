@@ -436,7 +436,7 @@ export default function HowItWorks() {
         <div className="container text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Play?</h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Put your cricket knowledge to the test and start building winning teams!
+            Put your cricket knowledge to the test and start building strategic teams!
           </p>
           <Link href="/matches">
             <Button size="lg" variant="secondary">

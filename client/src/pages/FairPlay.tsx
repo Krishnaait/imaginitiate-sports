@@ -45,7 +45,7 @@ export default function FairPlay() {
               </CardHeader>
               <CardContent className="space-y-4 text-muted-foreground">
                 <p>
-                  Every user on IMAGINITIATE has access to the same features, information, and opportunities. There are no premium memberships, paid advantages, or hidden benefits. Whether you're a new user or a veteran, you compete on the same level playing field.
+                  Every user on IMAGINITIATE has access to the same features, information, and opportunities. There are no premium memberships, advantages, or hidden benefits. Whether you're a new user or a veteran, you compete on the same level playing field.
                 </p>
                 <ul className="list-disc list-inside space-y-2 ml-4">
                   <li>All users see the same player statistics and match information</li>
