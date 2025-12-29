@@ -3,12 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { getLoginUrl } from "@/const";
-import { Trophy, Users, Brain, Shield, TrendingUp, Target, CheckCircle2, AlertCircle } from "lucide-react";
+import { Trophy, Users, Brain, Shield, TrendingUp, Target, CheckCircle2, AlertCircle, Menu, X } from "lucide-react";
 import { Link } from "wouter";
+import { useState } from "react";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 
 export default function Home() {
   const { user, isAuthenticated } = useAuth();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -18,11 +20,15 @@ export default function Home() {
       {/* Navigation */}
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="IMAGINITIATE" className="h-12 w-auto" />
-            <span className="font-bold text-2xl text-primary">IMAGINITIATE</span>
-          </div>
-          <div className="flex items-center gap-4">
+          <Link href="/">
+            <div className="flex items-center gap-2 md:gap-3 cursor-pointer">
+              <img src="/logo.png" alt="IMAGINITIATE" className="h-8 md:h-12 w-auto" />
+              <span className="font-bold text-lg md:text-2xl text-primary">IMAGINITIATE</span>
+            </div>
+          </Link>
+          
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-4">
             <Link href="/" className="text-sm font-medium hover:text-primary transition-colors">
               Home
             </Link>
@@ -48,21 +54,108 @@ export default function Home() {
               Contact Us
             </Link>
             {isAuthenticated ? (
-              <Link href="/dashboard">
-                <Button size="sm">Dashboard</Button>
-              </Link>
+              <Button size="sm" asChild>
+                <Link href="/dashboard">Dashboard</Link>
+              </Button>
             ) : (
               <>
-                <a href={getLoginUrl()}>
-                  <Button size="sm" variant="outline">Login</Button>
-                </a>
-                <a href={getLoginUrl()}>
-                  <Button size="sm">Register</Button>
-                </a>
+                <Button size="sm" variant="outline" asChild>
+                  <Link href="/login">Login</Link>
+                </Button>
+                <Button size="sm" asChild>
+                  <Link href="/register">Register</Link>
+                </Button>
               </>
             )}
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden border-t bg-background">
+            <div className="container py-4 flex flex-col gap-3">
+              <Link 
+                href="/" 
+                className="text-sm font-medium hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              <Link 
+                href="/about" 
+                className="text-sm font-medium hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                About Us
+              </Link>
+              <Link 
+                href="/how-it-works" 
+                className="text-sm font-medium hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                How It Works
+              </Link>
+              <Link 
+                href="/responsible-gaming" 
+                className="text-sm font-medium hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Responsible Gaming
+              </Link>
+              <a 
+                href="#faq" 
+                className="text-sm font-medium hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                FAQs
+              </a>
+              <Link 
+                href="/fair-play" 
+                className="text-sm font-medium hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Fair Play
+              </Link>
+              <Link 
+                href="/matches" 
+                className="text-sm font-medium hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Matches
+              </Link>
+              <Link 
+                href="/contact" 
+                className="text-sm font-medium hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact Us
+              </Link>
+              {isAuthenticated ? (
+                <Button size="sm" asChild className="mt-2">
+                  <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}>Dashboard</Link>
+                </Button>
+              ) : (
+                <div className="flex gap-2 mt-2">
+                  <Button size="sm" variant="outline" asChild className="flex-1">
+                    <Link href="/login" onClick={() => setMobileMenuOpen(false)}>Login</Link>
+                  </Button>
+                  <Button size="sm" asChild className="flex-1">
+                    <Link href="/register" onClick={() => setMobileMenuOpen(false)}>Register</Link>
+                  </Button>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
