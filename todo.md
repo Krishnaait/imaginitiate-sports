@@ -155,3 +155,32 @@
 - [x] Make header auto-responsive for all devices
 - [x] Use viewport-based sizing with clamp() for fluid scaling
 - [x] Changed breakpoint from lg (1024px) to xl (1280px) for hamburger menu
+
+
+## Phase 1: Core Database & API Implementation
+- [x] Create userTeams table in database schema
+- [x] Create teamPlayers table in database schema
+- [x] Create contests table in database schema
+- [x] Create contestEntries table in database schema
+- [x] Push database schema changes with pnpm db:push
+- [x] Create Cricket API library (server/cricketApi.ts)
+- [x] Implement getMatches() function
+- [x] Implement getMatchSquad() function
+- [x] Create tRPC procedure for fetching matches
+- [x] Create tRPC procedure for fetching match squad
+- [x] Create tRPC procedures for team creation (teams.create, teams.myTeams, teams.getById)
+- [x] Create tRPC procedures for contests (contests.list, contests.seed, contests.join, contests.myEntries, contests.leaderboard)
+- [x] Fix TypeScript errors and database connection issues
+
+
+## Phase 3: Team Creation UI Implementation
+- [ ] Update CreateTeam page with functional team builder
+- [ ] Fetch match squad data from tRPC
+- [ ] Implement player selection with role filtering
+- [ ] Add credit system (100 credits budget)
+- [ ] Add captain and vice-captain selection
+- [ ] Implement team composition validation
+- [ ] Add multi-step wizard (Select Players → Captain → Preview)
+- [ ] Connect to teams.create tRPC mutation
+- [ ] Add success/error toast notifications
+- [ ] Test complete team creation flow
