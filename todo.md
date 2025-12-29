@@ -125,3 +125,10 @@
 
 ## Domain Update
 - [x] Update domain from imanitiatesports.com to imaginitiatesports.com
+
+## Responsive Design
+- [x] Add mobile hamburger menu to navigation (Layout component)
+- [x] Fix responsive logo and header sizing
+- [x] Fix disclaimer banner for mobile
+- [x] Fix footer responsive grid layout
+- [x] Test responsive design across all pages
