@@ -1,6 +1,7 @@
 {
   "name": "imaginitiate_sports",
   "version": "1.0.0",
+  "description": "IMAGINITIATE - Free-to-play Fantasy Cricket Platform",
   "type": "module",
   "license": "MIT",
   "scripts": {
