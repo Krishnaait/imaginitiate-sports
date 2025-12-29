@@ -217,3 +217,7 @@
 - [ ] Update remaining pages (About, Matches, etc.) with dark theme
 - [ ] Test responsive design with new theme
 - [ ] Push to GitHub for Railway deployment
+
+
+## Bug Fixes
+- [x] Fix nested anchor tag error in Home.tsx (Link wrapping <a> tags)

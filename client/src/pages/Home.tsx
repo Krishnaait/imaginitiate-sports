@@ -18,27 +18,27 @@ export default function Home() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/">
-              <a className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+              <div className="flex items-center space-x-3 hover:opacity-80 transition-opacity cursor-pointer">
                 <img src="/logo.png" alt="IMAGINITIATE Logo" className="h-12 w-auto" />
                 <span className="text-2xl font-bold text-emerald-400">IMAGINITIATE</span>
-              </a>
+              </div>
             </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden xl:flex items-center space-x-8">
-              <Link href="/"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Home</a></Link>
-              <Link href="/about"><a className="text-gray-300 hover:text-emerald-400 transition-colors">About Us</a></Link>
-              <Link href="/how-it-works"><a className="text-gray-300 hover:text-emerald-400 transition-colors">How It Works</a></Link>
-              <Link href="/matches"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Matches</a></Link>
-              <Link href="/responsible-gaming"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Responsible Gaming</a></Link>
-              <Link href="/fair-play"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Fair Play</a></Link>
-              <Link href="/contact"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Contact Us</a></Link>
+              <Link href="/" className="text-gray-300 hover:text-emerald-400 transition-colors">Home</Link>
+              <Link href="/about" className="text-gray-300 hover:text-emerald-400 transition-colors">About Us</Link>
+              <Link href="/how-it-works" className="text-gray-300 hover:text-emerald-400 transition-colors">How It Works</Link>
+              <Link href="/matches" className="text-gray-300 hover:text-emerald-400 transition-colors">Matches</Link>
+              <Link href="/responsible-gaming" className="text-gray-300 hover:text-emerald-400 transition-colors">Responsible Gaming</Link>
+              <Link href="/fair-play" className="text-gray-300 hover:text-emerald-400 transition-colors">Fair Play</Link>
+              <Link href="/contact" className="text-gray-300 hover:text-emerald-400 transition-colors">Contact Us</Link>
               {isAuthenticated ? (
-                <Link href="/dashboard"><a><Button className="bg-emerald-500 hover:bg-emerald-600 text-white">Dashboard</Button></a></Link>
+                <Link href="/dashboard"><Button className="bg-emerald-500 hover:bg-emerald-600 text-white">Dashboard</Button></Link>
               ) : (
                 <>
-                  <Link href="/login"><a><Button variant="outline" className="border-emerald-500 text-emerald-400 hover:bg-emerald-500 hover:text-white">Login</Button></a></Link>
-                  <Link href="/register"><a><Button className="bg-emerald-500 hover:bg-emerald-600 text-white">Register</Button></a></Link>
+                  <Link href="/login"><Button variant="outline" className="border-emerald-500 text-emerald-400 hover:bg-emerald-500 hover:text-white">Login</Button></Link>
+                  <Link href="/register"><Button className="bg-emerald-500 hover:bg-emerald-600 text-white">Register</Button></Link>
                 </>
               )}
             </div>
@@ -56,20 +56,20 @@ export default function Home() {
           {mobileMenuOpen && (
             <div className="xl:hidden py-4 border-t border-gray-800">
               <div className="flex flex-col space-y-4">
-                <Link href="/"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Home</a></Link>
-                <Link href="/about"><a className="text-gray-300 hover:text-emerald-400 transition-colors">About Us</a></Link>
-                <Link href="/how-it-works"><a className="text-gray-300 hover:text-emerald-400 transition-colors">How It Works</a></Link>
-                <Link href="/matches"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Matches</a></Link>
-                <Link href="/responsible-gaming"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Responsible Gaming</a></Link>
-                <Link href="/fair-play"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Fair Play</a></Link>
-                <Link href="/contact"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Contact Us</a></Link>
+                <Link href="/" className="text-gray-300 hover:text-emerald-400 transition-colors">Home</Link>
+                <Link href="/about" className="text-gray-300 hover:text-emerald-400 transition-colors">About Us</Link>
+                <Link href="/how-it-works" className="text-gray-300 hover:text-emerald-400 transition-colors">How It Works</Link>
+                <Link href="/matches" className="text-gray-300 hover:text-emerald-400 transition-colors">Matches</Link>
+                <Link href="/responsible-gaming" className="text-gray-300 hover:text-emerald-400 transition-colors">Responsible Gaming</Link>
+                <Link href="/fair-play" className="text-gray-300 hover:text-emerald-400 transition-colors">Fair Play</Link>
+                <Link href="/contact" className="text-gray-300 hover:text-emerald-400 transition-colors">Contact Us</Link>
                 <div className="flex flex-col space-y-2 pt-4">
                   {isAuthenticated ? (
-                    <Link href="/dashboard"><a><Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white">Dashboard</Button></a></Link>
+                    <Link href="/dashboard"><Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white">Dashboard</Button></Link>
                   ) : (
                     <>
-                      <Link href="/login"><a><Button variant="outline" className="w-full border-emerald-500 text-emerald-400 hover:bg-emerald-500 hover:text-white">Login</Button></a></Link>
-                      <Link href="/register"><a><Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white">Register</Button></a></Link>
+                      <Link href="/login"><Button variant="outline" className="w-full border-emerald-500 text-emerald-400 hover:bg-emerald-500 hover:text-white">Login</Button></Link>
+                      <Link href="/register"><Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white">Register</Button></Link>
                     </>
                   )}
                 </div>
@@ -104,27 +104,21 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {isAuthenticated ? (
               <Link href="/dashboard">
-                <a>
-                  <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 text-lg px-8 py-6">
-                    Go to Dashboard
-                  </Button>
-                </a>
+                <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 text-lg px-8 py-6">
+                  Go to Dashboard
+                </Button>
               </Link>
             ) : (
               <>
                 <Link href="/register">
-                  <a>
-                    <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 text-lg px-8 py-6">
-                      Start Playing Free
-                    </Button>
-                  </a>
+                  <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 text-lg px-8 py-6">
+                    Start Playing Free
+                  </Button>
                 </Link>
                 <Link href="/how-it-works">
-                  <a>
-                    <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 text-lg px-8 py-6">
-                      Learn How
-                    </Button>
-                  </a>
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 text-lg px-8 py-6">
+                    Learn How
+                  </Button>
                 </Link>
               </>
             )}
@@ -244,11 +238,9 @@ export default function Home() {
               Experience the thrill of fantasy cricket with our skill-based platform. Analyze player stats, study pitch conditions, and make strategic decisions to outsmart your opponents. Every choice matters in the pursuit of victory.
             </p>
             <Link href="/how-it-works">
-              <a>
-                <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white">
-                  Discover More
-                </Button>
-              </a>
+              <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white">
+                Discover More
+              </Button>
             </Link>
           </div>
         </div>
@@ -299,11 +291,9 @@ export default function Home() {
               Feel the adrenaline rush as your players score runs, take wickets, and lead your team to victory. Experience the emotional rollercoaster of fantasy cricket where every ball can change your fortunes. Join millions who live and breathe cricket through strategic gameplay.
             </p>
             <Link href="/matches">
-              <a>
-                <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white">
-                  View Matches
-                </Button>
-              </a>
+              <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white">
+                View Matches
+              </Button>
             </Link>
           </div>
         </div>
@@ -329,11 +319,9 @@ export default function Home() {
             Join thousands of cricket fans and start winning
           </p>
           <Link href="/register">
-            <a>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 text-lg px-12 py-6">
-                Register Now
-              </Button>
-            </a>
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 text-lg px-12 py-6">
+              Register Now
+            </Button>
           </Link>
         </div>
       </section>
@@ -357,10 +345,10 @@ export default function Home() {
             <div>
               <h3 className="text-white font-bold mb-4">Quick Links</h3>
               <div className="flex flex-col space-y-2">
-                <Link href="/about"><a className="text-gray-400 hover:text-emerald-400 text-sm">About Us</a></Link>
-                <Link href="/how-it-works"><a className="text-gray-400 hover:text-emerald-400 text-sm">How It Works</a></Link>
-                <Link href="/fantasy-cricket"><a className="text-gray-400 hover:text-emerald-400 text-sm">Fantasy Cricket</a></Link>
-                <Link href="/contact"><a className="text-gray-400 hover:text-emerald-400 text-sm">Contact</a></Link>
+                <Link href="/about" className="text-gray-400 hover:text-emerald-400 text-sm">About Us</Link>
+                <Link href="/how-it-works" className="text-gray-400 hover:text-emerald-400 text-sm">How It Works</Link>
+                <Link href="/fantasy-cricket" className="text-gray-400 hover:text-emerald-400 text-sm">Fantasy Cricket</Link>
+                <Link href="/contact" className="text-gray-400 hover:text-emerald-400 text-sm">Contact</Link>
               </div>
             </div>
 
@@ -368,10 +356,10 @@ export default function Home() {
             <div>
               <h3 className="text-white font-bold mb-4">Legal</h3>
               <div className="flex flex-col space-y-2">
-                <Link href="/terms"><a className="text-gray-400 hover:text-emerald-400 text-sm">Terms & Conditions</a></Link>
-                <Link href="/privacy"><a className="text-gray-400 hover:text-emerald-400 text-sm">Privacy Policy</a></Link>
-                <Link href="/disclaimer"><a className="text-gray-400 hover:text-emerald-400 text-sm">Disclaimer</a></Link>
-                <Link href="/responsible-gaming"><a className="text-gray-400 hover:text-emerald-400 text-sm">Responsible Gaming</a></Link>
+                <Link href="/terms" className="text-gray-400 hover:text-emerald-400 text-sm">Terms & Conditions</Link>
+                <Link href="/privacy" className="text-gray-400 hover:text-emerald-400 text-sm">Privacy Policy</Link>
+                <Link href="/disclaimer" className="text-gray-400 hover:text-emerald-400 text-sm">Disclaimer</Link>
+                <Link href="/responsible-gaming" className="text-gray-400 hover:text-emerald-400 text-sm">Responsible Gaming</Link>
               </div>
             </div>
 
