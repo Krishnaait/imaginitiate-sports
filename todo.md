@@ -108,3 +108,6 @@
 
 ## Content Updates
 - [x] Update disclaimer banner to show actual names of 7 restricted states instead of "7 Indian States"
+
+## Bug Fixes
+- [x] Fix nested anchor tag error on Home.tsx page

@@ -497,21 +497,21 @@ export default function Home() {
             <div>
               <h3 className="font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/about"><a className="text-muted-foreground hover:text-primary">About Us</a></Link></li>
-                <li><Link href="/how-it-works"><a className="text-muted-foreground hover:text-primary">How It Works</a></Link></li>
-                <li><Link href="/fantasy-cricket"><a className="text-muted-foreground hover:text-primary">Fantasy Cricket</a></Link></li>
-                <li><Link href="/matches"><a className="text-muted-foreground hover:text-primary">Matches</a></Link></li>
-                <li><Link href="/fair-play"><a className="text-muted-foreground hover:text-primary">Fair Play</a></Link></li>
-                <li><Link href="/contact"><a className="text-muted-foreground hover:text-primary">Contact Us</a></Link></li>
+                <li><Link href="/about" className="text-muted-foreground hover:text-primary">About Us</Link></li>
+                <li><Link href="/how-it-works" className="text-muted-foreground hover:text-primary">How It Works</Link></li>
+                <li><Link href="/fantasy-cricket" className="text-muted-foreground hover:text-primary">Fantasy Cricket</Link></li>
+                <li><Link href="/matches" className="text-muted-foreground hover:text-primary">Matches</Link></li>
+                <li><Link href="/fair-play" className="text-muted-foreground hover:text-primary">Fair Play</Link></li>
+                <li><Link href="/contact" className="text-muted-foreground hover:text-primary">Contact Us</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="font-semibold mb-4">Legal</h3>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/terms"><a className="text-muted-foreground hover:text-primary">Terms & Conditions</a></Link></li>
-                <li><Link href="/privacy"><a className="text-muted-foreground hover:text-primary">Privacy Policy</a></Link></li>
-                <li><Link href="/disclaimer"><a className="text-muted-foreground hover:text-primary">Disclaimer</a></Link></li>
-                <li><Link href="/responsible-gaming"><a className="text-muted-foreground hover:text-primary">Responsible Gaming</a></Link></li>
+                <li><Link href="/terms" className="text-muted-foreground hover:text-primary">Terms & Conditions</Link></li>
+                <li><Link href="/privacy" className="text-muted-foreground hover:text-primary">Privacy Policy</Link></li>
+                <li><Link href="/disclaimer" className="text-muted-foreground hover:text-primary">Disclaimer</Link></li>
+                <li><Link href="/responsible-gaming" className="text-muted-foreground hover:text-primary">Responsible Gaming</Link></li>
               </ul>
             </div>
           </div>
