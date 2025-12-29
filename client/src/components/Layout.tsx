@@ -23,8 +23,7 @@ export function Layout({ children }: LayoutProps) {
         <div className="container flex h-16 items-center justify-between">
           <Link href="/">
             <div className="flex items-center gap-2 cursor-pointer">
-              <Trophy className="h-6 w-6 text-primary" />
-              <span className="font-bold text-xl">IMAGINITIATE</span>
+              <img src="/logo.png" alt="IMAGINITIATE" className="h-10 w-auto" />
             </div>
           </Link>
           <div className="flex items-center gap-4 overflow-x-auto">

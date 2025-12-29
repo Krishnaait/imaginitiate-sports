@@ -19,8 +19,7 @@ export default function Home() {
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
-            <Trophy className="h-6 w-6 text-primary" />
-            <span className="font-bold text-xl">IMAGINITIATE</span>
+            <img src="/logo.png" alt="IMAGINITIATE" className="h-10 w-auto" />
           </div>
           <div className="flex items-center gap-4">
             <Link href="/" className="text-sm font-medium hover:text-primary transition-colors">
@@ -66,8 +65,12 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="hero-gradient text-white py-20 md:py-32">
-        <div className="container">
+      <section className="relative text-white py-20 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src="/hero-banner.png" alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
+        </div>
+        <div className="container relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">

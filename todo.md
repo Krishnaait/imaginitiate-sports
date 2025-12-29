@@ -111,3 +111,8 @@
 
 ## Bug Fixes
 - [x] Fix nested anchor tag error on Home.tsx page
+
+## Design Assets
+- [x] Generate brand logo for IMAGINITIATE
+- [x] Generate background banner image for hero section
+- [x] Integrate logo and banner into website
