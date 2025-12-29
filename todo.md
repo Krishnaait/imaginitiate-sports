@@ -232,3 +232,10 @@
 - [x] Update database schema - already clean, no entryFee or prizePool fields exist
 - [x] Update Contests page UI to remove entry fee display (no entry fees in UI)
 - [x] Fix Home.tsx syntax error causing Vite build failure (server restarted successfully)
+
+
+## Railway Deployment Error Fix
+- [x] Analyze error: TypeError [ERR_INVALID_ARG_TYPE] at dist/index.js:787
+- [x] Find path.resolve() call with undefined argument (import.meta.dirname)
+- [x] Fix Node.js v18 compatibility issue (replaced with __dirname)
+- [x] Test locally and push to GitHub
