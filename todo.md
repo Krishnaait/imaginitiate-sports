@@ -200,3 +200,20 @@
 - [x] Add routes for /create-team/:id and /contests/:id
 - [x] Add progress bars showing contest fill percentage
 - [ ] Test complete contest flow end-to-end
+
+
+## Website Redesign - Dark Cinematic Theme
+- [x] Generate hero image: Dramatic cricket stadium with players in action
+- [x] Generate feature image 1: Intense cricket batting moment
+- [x] Generate feature image 2: Cricket team celebration
+- [x] Generate feature image 3: Strategic team planning
+- [x] Generate feature image 4: Cricket bowler action shot
+- [x] Redesign homepage with dark theme and cinematic layouts
+- [x] Update global CSS to dark color scheme (emerald green primary)
+- [x] Replace all placeholder images with generated cricket images
+- [x] Add cinematic hero section with full-screen background
+- [x] Add feature cards with hover effects
+- [x] Add stats section and atmospheric sections
+- [ ] Update remaining pages (About, Matches, etc.) with dark theme
+- [ ] Test responsive design with new theme
+- [ ] Push to GitHub for Railway deployment

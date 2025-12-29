@@ -1,654 +1,395 @@
-import { useAuth } from "@/_core/hooks/useAuth";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { getLoginUrl } from "@/const";
-import { Trophy, Users, Brain, Shield, TrendingUp, Target, CheckCircle2, AlertCircle, Menu, X } from "lucide-react";
-import { Link } from "wouter";
 import { useState } from "react";
-import { DisclaimerBanner } from "@/components/DisclaimerBanner";
+import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Menu, X, Trophy } from "lucide-react";
+import { useAuth } from "@/_core/hooks/useAuth";
+import { getLoginUrl } from "@/const";
 
 export default function Home() {
-  const { user, isAuthenticated } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { isAuthenticated } = useAuth();
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Disclaimer Banner */}
-      <DisclaimerBanner />
-      
-      {/* Auto-Responsive Navigation */}
-      <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-        <div className="container flex items-center justify-between" style={{ height: 'clamp(3.5rem, 10vw, 4rem)' }}>
-          <Link href="/">
-            <div className="flex items-center cursor-pointer" style={{ gap: 'clamp(0.5rem, 2vw, 0.75rem)' }}>
-              <img 
-                src="/logo.png" 
-                alt="IMAGINITIATE" 
-                className="w-auto"
-                style={{ height: 'clamp(2rem, 6vw, 3rem)' }}
-              />
-              <span 
-                className="font-bold text-primary"
-                style={{ fontSize: 'clamp(1.125rem, 3vw, 1.5rem)' }}
-              >
-                IMAGINITIATE
-              </span>
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-900 to-black text-white">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <Link href="/">
+              <a className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+                <img src="/logo.png" alt="IMAGINITIATE Logo" className="h-12 w-auto" />
+                <span className="text-2xl font-bold text-emerald-400">IMAGINITIATE</span>
+              </a>
+            </Link>
+
+            {/* Desktop Navigation */}
+            <div className="hidden xl:flex items-center space-x-8">
+              <Link href="/"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Home</a></Link>
+              <Link href="/about"><a className="text-gray-300 hover:text-emerald-400 transition-colors">About Us</a></Link>
+              <Link href="/how-it-works"><a className="text-gray-300 hover:text-emerald-400 transition-colors">How It Works</a></Link>
+              <Link href="/matches"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Matches</a></Link>
+              <Link href="/responsible-gaming"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Responsible Gaming</a></Link>
+              <Link href="/fair-play"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Fair Play</a></Link>
+              <Link href="/contact"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Contact Us</a></Link>
+              {isAuthenticated ? (
+                <Link href="/dashboard"><a><Button className="bg-emerald-500 hover:bg-emerald-600 text-white">Dashboard</Button></a></Link>
+              ) : (
+                <>
+                  <Link href="/login"><a><Button variant="outline" className="border-emerald-500 text-emerald-400 hover:bg-emerald-500 hover:text-white">Login</Button></a></Link>
+                  <Link href="/register"><a><Button className="bg-emerald-500 hover:bg-emerald-600 text-white">Register</Button></a></Link>
+                </>
+              )}
             </div>
-          </Link>
-          
-          {/* Desktop Navigation - Shows on large screens */}
-          <div className="hidden xl:flex items-center" style={{ gap: 'clamp(0.5rem, 1.5vw, 1rem)' }}>
-            <Link href="/" className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">
-              Home
-            </Link>
-            <Link href="/about" className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">
-              About Us
-            </Link>
-            <Link href="/how-it-works" className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">
-              How It Works
-            </Link>
-            <Link href="/responsible-gaming" className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">
-              Responsible Gaming
-            </Link>
-            <a href="#faq" className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">
-              FAQs
-            </a>
-            <Link href="/fair-play" className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">
-              Fair Play
-            </Link>
-            <Link href="/matches" className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">
-              Matches
-            </Link>
-            <Link href="/contact" className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">
-              Contact Us
-            </Link>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="xl:hidden text-white p-2"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
+
+          {/* Mobile Menu */}
+          {mobileMenuOpen && (
+            <div className="xl:hidden py-4 border-t border-gray-800">
+              <div className="flex flex-col space-y-4">
+                <Link href="/"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Home</a></Link>
+                <Link href="/about"><a className="text-gray-300 hover:text-emerald-400 transition-colors">About Us</a></Link>
+                <Link href="/how-it-works"><a className="text-gray-300 hover:text-emerald-400 transition-colors">How It Works</a></Link>
+                <Link href="/matches"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Matches</a></Link>
+                <Link href="/responsible-gaming"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Responsible Gaming</a></Link>
+                <Link href="/fair-play"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Fair Play</a></Link>
+                <Link href="/contact"><a className="text-gray-300 hover:text-emerald-400 transition-colors">Contact Us</a></Link>
+                <div className="flex flex-col space-y-2 pt-4">
+                  {isAuthenticated ? (
+                    <Link href="/dashboard"><a><Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white">Dashboard</Button></a></Link>
+                  ) : (
+                    <>
+                      <Link href="/login"><a><Button variant="outline" className="w-full border-emerald-500 text-emerald-400 hover:bg-emerald-500 hover:text-white">Login</Button></a></Link>
+                      <Link href="/register"><a><Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white">Register</Button></a></Link>
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/hero-cricket-stadium.jpg"
+            alt="Cricket Stadium"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-gray-900"></div>
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 container mx-auto px-4 text-center pt-20">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+            MASTER YOUR CRICKET
+            <br />
+            <span className="text-emerald-400">KNOWLEDGE</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            Free-to-play fantasy cricket platform where skill meets strategy. Build your dream team and compete with cricket enthusiasts worldwide.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {isAuthenticated ? (
-              <Button size="sm" asChild>
-                <Link href="/dashboard">Dashboard</Link>
-              </Button>
+              <Link href="/dashboard">
+                <a>
+                  <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 text-lg px-8 py-6">
+                    Go to Dashboard
+                  </Button>
+                </a>
+              </Link>
             ) : (
               <>
-                <Button size="sm" variant="outline" asChild>
-                  <Link href="/login">Login</Link>
-                </Button>
-                <Button size="sm" asChild>
-                  <Link href="/register">Register</Link>
-                </Button>
+                <Link href="/register">
+                  <a>
+                    <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 text-lg px-8 py-6">
+                      Start Playing Free
+                    </Button>
+                  </a>
+                </Link>
+                <Link href="/how-it-works">
+                  <a>
+                    <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 text-lg px-8 py-6">
+                      Learn How
+                    </Button>
+                  </a>
+                </Link>
               </>
             )}
           </div>
 
-          {/* Mobile Menu Button - Shows on smaller screens */}
-          <button
-            className="xl:hidden p-2 rounded-md hover:bg-accent transition-colors"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation Menu */}
-        {mobileMenuOpen && (
-          <div className="xl:hidden border-t bg-background">
-            <div 
-              className="container flex flex-col"
-              style={{ 
-                gap: 'clamp(0.5rem, 2vw, 0.75rem)',
-                paddingTop: 'clamp(1rem, 3vw, 1.5rem)',
-                paddingBottom: 'clamp(1rem, 3vw, 1.5rem)'
-              }}
-            >
-              <Link 
-                href="/" 
-                className="text-sm font-medium hover:text-primary transition-colors"
-                style={{ padding: 'clamp(0.5rem, 2vw, 0.75rem) 0' }}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link 
-                href="/about" 
-                className="text-sm font-medium hover:text-primary transition-colors"
-                style={{ padding: 'clamp(0.5rem, 2vw, 0.75rem) 0' }}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                About Us
-              </Link>
-              <Link 
-                href="/how-it-works" 
-                className="text-sm font-medium hover:text-primary transition-colors"
-                style={{ padding: 'clamp(0.5rem, 2vw, 0.75rem) 0' }}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                How It Works
-              </Link>
-              <Link 
-                href="/responsible-gaming" 
-                className="text-sm font-medium hover:text-primary transition-colors"
-                style={{ padding: 'clamp(0.5rem, 2vw, 0.75rem) 0' }}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Responsible Gaming
-              </Link>
-              <a 
-                href="#faq" 
-                className="text-sm font-medium hover:text-primary transition-colors"
-                style={{ padding: 'clamp(0.5rem, 2vw, 0.75rem) 0' }}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                FAQs
-              </a>
-              <Link 
-                href="/fair-play" 
-                className="text-sm font-medium hover:text-primary transition-colors"
-                style={{ padding: 'clamp(0.5rem, 2vw, 0.75rem) 0' }}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Fair Play
-              </Link>
-              <Link 
-                href="/matches" 
-                className="text-sm font-medium hover:text-primary transition-colors"
-                style={{ padding: 'clamp(0.5rem, 2vw, 0.75rem) 0' }}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Matches
-              </Link>
-              <Link 
-                href="/contact" 
-                className="text-sm font-medium hover:text-primary transition-colors"
-                style={{ padding: 'clamp(0.5rem, 2vw, 0.75rem) 0' }}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Contact Us
-              </Link>
-              {isAuthenticated ? (
-                <Button size="sm" asChild className="mt-2">
-                  <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}>Dashboard</Link>
-                </Button>
-              ) : (
-                <div className="flex gap-2 mt-2">
-                  <Button size="sm" variant="outline" asChild className="flex-1">
-                    <Link href="/login" onClick={() => setMobileMenuOpen(false)}>Login</Link>
-                  </Button>
-                  <Button size="sm" asChild className="flex-1">
-                    <Link href="/register" onClick={() => setMobileMenuOpen(false)}>Register</Link>
-                  </Button>
-                </div>
-              )}
+          {/* Trust Badges */}
+          <div className="flex flex-wrap justify-center gap-8 mt-12 text-sm text-gray-400">
+            <div className="flex items-center gap-2">
+              <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                <span className="text-emerald-400 font-bold">100%</span>
+              </div>
+              <span>Skill Based</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                <Trophy className="text-emerald-400" size={24} />
+              </div>
+              <span>Safe & Secure</span>
             </div>
           </div>
-        )}
-      </nav>
+        </div>
+      </section>
 
-      {/* Hero Section */}
-      <section className="relative text-white py-20 md:py-32 overflow-hidden">
+      {/* Features Grid */}
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Feature 1 */}
+            <Card className="relative overflow-hidden bg-gray-900 border-gray-800 hover:border-emerald-500 transition-all group">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src="/cricket-batsman-action.jpg"
+                  alt="Create Your Team"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2 text-white">Create Your Team</h3>
+                <p className="text-gray-400 text-sm">
+                  Select 11 players within 100 credits. Choose your captain and vice-captain wisely.
+                </p>
+              </div>
+            </Card>
+
+            {/* Feature 2 */}
+            <Card className="relative overflow-hidden bg-gray-900 border-gray-800 hover:border-emerald-500 transition-all group">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src="/cricket-strategy-planning.jpg"
+                  alt="Join Contests"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2 text-white">Join Contests</h3>
+                <p className="text-gray-400 text-sm">
+                  Enter free or paid contests. Compete with thousands of players for exciting prizes.
+                </p>
+              </div>
+            </Card>
+
+            {/* Feature 3 */}
+            <Card className="relative overflow-hidden bg-gray-900 border-gray-800 hover:border-emerald-500 transition-all group">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src="/cricket-team-celebration.jpg"
+                  alt="Track Live Scores"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2 text-white">Track Live Scores</h3>
+                <p className="text-gray-400 text-sm">
+                  Follow real-time match updates and see your team's performance as it happens.
+                </p>
+              </div>
+            </Card>
+
+            {/* Feature 4 */}
+            <Card className="relative overflow-hidden bg-gray-900 border-gray-800 hover:border-emerald-500 transition-all group">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src="/cricket-bowler-action.jpg"
+                  alt="Win Big Prizes"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2 text-white">Win Big Prizes</h3>
+                <p className="text-gray-400 text-sm">
+                  Top performers win cash prizes, rewards, and exclusive merchandise.
+                </p>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="relative py-32 overflow-hidden">
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img src="/hero-banner.png" alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
+          <img
+            src="/cricket-batsman-action.jpg"
+            alt="Strategic Fantasy Cricket"
+            className="w-full h-full object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/95 to-gray-900/80"></div>
         </div>
-        <div className="container relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                Master Your Cricket Knowledge
-              </h1>
-              <p className="text-xl md:text-2xl text-white/90">
-                Free-to-play fantasy cricket platform where skill meets strategy. Build your dream team and compete with cricket enthusiasts worldwide.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                {isAuthenticated ? (
-                  <Link href="/dashboard">
-                    <Button size="lg" variant="secondary" className="w-full sm:w-auto">
-                      Go to Dashboard
-                    </Button>
-                  </Link>
-                ) : (
-                  <a href={getLoginUrl()}>
-                    <Button size="lg" variant="secondary" className="w-full sm:w-auto">
-                      Start Playing Free
-                    </Button>
-                  </a>
-                )}
-                <a href="#how-it-works">
-                  <Button size="lg" variant="outline" className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border-white/30">
-                    Learn How
-                  </Button>
-                </a>
-              </div>
-              <div className="flex items-center gap-8 pt-4">
-                <div>
-                  <div className="text-3xl font-bold">100%</div>
-                  <div className="text-sm text-white/80">Free to Play</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold">Skill</div>
-                  <div className="text-sm text-white/80">Based Gaming</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold">Safe</div>
-                  <div className="text-sm text-white/80">& Educational</div>
-                </div>
-              </div>
+
+        <div className="relative z-10 container mx-auto px-4">
+          <div className="max-w-2xl">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+              Strategic Fantasy Cricket
+            </h2>
+            <p className="text-lg text-gray-300 mb-8 leading-relaxed">
+              Experience the thrill of fantasy cricket with our skill-based platform. Analyze player stats, study pitch conditions, and make strategic decisions to outsmart your opponents. Every choice matters in the pursuit of victory.
+            </p>
+            <Link href="/how-it-works">
+              <a>
+                <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white">
+                  Discover More
+                </Button>
+              </a>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-20 bg-gradient-to-b from-black to-gray-900">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-2">10K+</div>
+              <div className="text-gray-400">Active Players</div>
             </div>
-            <div className="relative">
-              <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl animate-float">
-                <img src="/cricketer-hero.jpg" alt="Cricket Player in Action" className="w-full h-full object-cover" />
-              </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-2">500+</div>
+              <div className="text-gray-400">Daily Contests</div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-2">₹10L+</div>
+              <div className="text-gray-400">Prizes Won</div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-2">4.8★</div>
+              <div className="text-gray-400">User Rating</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-20 bg-muted/50">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose IMAGINITIATE?</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Experience the thrill of fantasy cricket with our skill-based, educational platform designed for true cricket fans.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card>
-              <CardHeader>
-                <Brain className="h-12 w-12 text-primary mb-4" />
-                <CardTitle>Skill-Based Gameplay</CardTitle>
-                <CardDescription>
-                  Test your cricket knowledge and strategic thinking. Success comes from understanding the game, not luck.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Shield className="h-12 w-12 text-primary mb-4" />
-                <CardTitle>100% Free to Play</CardTitle>
-                <CardDescription>
-                  No hidden costs, no subscriptions. Enjoy unlimited access to all features completely free.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Users className="h-12 w-12 text-primary mb-4" />
-                <CardTitle>Compete with Friends</CardTitle>
-                <CardDescription>
-                  Create private contests, challenge your friends, and prove who knows cricket best.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card>
-              <CardHeader>
-                <TrendingUp className="h-12 w-12 text-primary mb-4" />
-                <CardTitle>Real-Time Updates</CardTitle>
-                <CardDescription>
-                  Track live matches, get instant score updates, and watch your team's performance in real-time.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Target className="h-12 w-12 text-primary mb-4" />
-                <CardTitle>Educational Focus</CardTitle>
-                <CardDescription>
-                  Learn cricket strategies, player statistics, and improve your understanding of the game.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Trophy className="h-12 w-12 text-primary mb-4" />
-                <CardTitle>Leaderboards & Rankings</CardTitle>
-                <CardDescription>
-                  Climb the ranks, earn skill points, and showcase your cricket expertise to the community.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
+      {/* The True Emotions Section */}
+      <section className="relative py-32 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/cricket-bowler-action.jpg"
+            alt="The Thrill of Competition"
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-gray-900 via-gray-900/95 to-gray-900/80"></div>
         </div>
-      </section>
 
-      {/* How It Works Section */}
-      <section id="how-it-works" className="py-20">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Get started in minutes with our simple, educational approach to fantasy cricket.
+        <div className="relative z-10 container mx-auto px-4">
+          <div className="max-w-2xl ml-auto">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+              The Thrill of Competition
+            </h2>
+            <p className="text-lg text-gray-300 mb-8 leading-relaxed">
+              Feel the adrenaline rush as your players score runs, take wickets, and lead your team to victory. Experience the emotional rollercoaster of fantasy cricket where every ball can change your fortunes. Join millions who live and breathe cricket through strategic gameplay.
             </p>
-          </div>
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto">
-                1
-              </div>
-              <h3 className="text-xl font-semibold">Sign Up Free</h3>
-              <p className="text-muted-foreground">
-                Create your account in seconds. No credit card required, completely free forever.
-              </p>
-            </div>
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto">
-                2
-              </div>
-              <h3 className="text-xl font-semibold">Choose a Match</h3>
-              <p className="text-muted-foreground">
-                Browse live, upcoming, and completed matches. Select the one you want to play.
-              </p>
-            </div>
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto">
-                3
-              </div>
-              <h3 className="text-xl font-semibold">Build Your Team</h3>
-              <p className="text-muted-foreground">
-                Select 11 players within your credit limit. Choose captain and vice-captain strategically.
-              </p>
-            </div>
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto">
-                4
-              </div>
-              <h3 className="text-xl font-semibold">Earn Skill Points</h3>
-              <p className="text-muted-foreground">
-                Watch your team perform and earn skill points based on real match performance.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Matches Preview Section */}
-      <section id="matches" className="py-20 bg-muted/50">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Live & Upcoming Matches</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Join contests for live matches or plan ahead with upcoming fixtures.
-            </p>
-          </div>
-          <div className="text-center">
             <Link href="/matches">
-              <Button size="lg">View All Matches</Button>
+              <a>
+                <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white">
+                  View Matches
+                </Button>
+              </a>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section id="faq" className="py-20">
-        <div className="container max-w-3xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-xl text-muted-foreground">
-              Everything you need to know about IMAGINITIATE fantasy sports.
-            </p>
-          </div>
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger>Is IMAGINITIATE really free to play?</AccordionTrigger>
-              <AccordionContent>
-                Yes! IMAGINITIATE is 100% free to play. There are no hidden costs, no subscriptions, and no in-app purchases. We believe fantasy cricket should be accessible to everyone who loves the game.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2">
-              <AccordionTrigger>How do I earn skill points?</AccordionTrigger>
-              <AccordionContent>
-                Skill points are earned based on your team's real-world performance in matches. Players score points for runs, wickets, catches, and other cricket actions. Your captain earns 2x points and vice-captain earns 1.5x points.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-3">
-              <AccordionTrigger>Can I create private contests with friends?</AccordionTrigger>
-              <AccordionContent>
-                Absolutely! You can create private contests and invite your friends to compete. It's a great way to add friendly competition to your cricket watching experience.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-4">
-              <AccordionTrigger>What makes this skill-based and not gambling?</AccordionTrigger>
-              <AccordionContent>
-                IMAGINITIATE is purely skill-based and educational. Success depends on your cricket knowledge, strategic team selection, and understanding of player performance. There's no element of chance or betting involved. It's designed to enhance your cricket knowledge and analytical skills.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-5">
-              <AccordionTrigger>How do I choose the best team?</AccordionTrigger>
-              <AccordionContent>
-                Consider factors like recent form, pitch conditions, head-to-head records, and player roles. Balance your team across batsmen, bowlers, all-rounders, and wicket-keepers. Use your cricket knowledge to make informed decisions about captain and vice-captain selections.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-6">
-              <AccordionTrigger>Can I edit my team after creating it?</AccordionTrigger>
-              <AccordionContent>
-                You can edit your team until the match starts. Once the match begins, your team is locked and you can watch how your selections perform in real-time.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+      {/* CTA Section */}
+      <section className="relative py-32 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/cricket-team-celebration.jpg"
+            alt="Start Playing Today"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/70"></div>
         </div>
-      </section>
 
-      {/* Compliance Section */}
-      <section className="py-20 bg-muted/50">
-        <div className="container max-w-4xl">
-          <div className="text-center mb-12">
-            <Shield className="h-16 w-16 text-primary mx-auto mb-4" />
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Compliance & Legal</h2>
-            <p className="text-xl text-muted-foreground">
-              Our commitment to safe, legal, and responsible gaming.
-            </p>
-          </div>
-          <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-primary" />
-                  Skill-Based Gaming
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  IMAGINITIATE operates as a skill-based fantasy sports platform. Success on our platform depends entirely on your cricket knowledge, strategic thinking, and analytical abilities. We do not offer any form of gambling or games of chance.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-primary" />
-                  Educational Purpose
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Our platform is designed for educational and entertainment purposes. We aim to enhance your understanding of cricket, improve analytical skills, and provide a fun way to engage with the sport you love.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-primary" />
-                  Age Requirement
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Users must be 18 years or older to participate. We verify age during registration to ensure compliance with legal requirements and protect minors.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-primary" />
-                  Data Privacy
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  We take your privacy seriously. All personal information is encrypted and stored securely. We never share your data with third parties without your explicit consent.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Responsible Play Section */}
-      <section className="py-20">
-        <div className="container max-w-4xl">
-          <div className="text-center mb-12">
-            <AlertCircle className="h-16 w-16 text-primary mx-auto mb-4" />
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Responsible Play</h2>
-            <p className="text-xl text-muted-foreground">
-              Enjoy fantasy cricket responsibly and maintain a healthy balance.
-            </p>
-          </div>
-          <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Play for Fun & Learning</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-muted-foreground">
-                  IMAGINITIATE is designed to be an enjoyable, educational experience. Remember to:
-                </p>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Set time limits for your gaming sessions</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Focus on learning and improving your cricket knowledge</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Maintain a healthy balance with other activities</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Remember it's a game meant for entertainment</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Self-Assessment</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  If you find yourself experiencing any of the following, consider taking a break:
-                </p>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <AlertCircle className="h-5 w-5 text-destructive mt-0.5 flex-shrink-0" />
-                    <span>Spending more time than intended on the platform</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <AlertCircle className="h-5 w-5 text-destructive mt-0.5 flex-shrink-0" />
-                    <span>Neglecting other responsibilities or relationships</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <AlertCircle className="h-5 w-5 text-destructive mt-0.5 flex-shrink-0" />
-                    <span>Feeling stressed or anxious about your team's performance</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Need Help?</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  If you have concerns about your gaming habits or need support, please contact our support team. We're here to help ensure your experience remains positive and healthy.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Test Your Cricket Knowledge?</h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Join thousands of cricket fans on IMAGINITIATE. Build your dream team, compete with friends, and prove your expertise.
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+            START PLAYING TODAY
+          </h2>
+          <p className="text-xl text-gray-300 mb-8">
+            Join thousands of cricket fans and start winning
           </p>
-          {isAuthenticated ? (
-            <Link href="/dashboard">
-              <Button size="lg" variant="secondary">
-                Go to Dashboard
-              </Button>
-            </Link>
-          ) : (
-            <a href={getLoginUrl()}>
-              <Button size="lg" variant="secondary">
-                Start Playing Free Now
+          <Link href="/register">
+            <a>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 text-lg px-12 py-6">
+                Register Now
               </Button>
             </a>
-          )}
+          </Link>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t py-12 bg-muted/50">
-        <div className="container">
-          <div className="grid md:grid-cols-4 gap-8">
+      <footer className="bg-black border-t border-gray-800 py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            {/* Brand */}
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Trophy className="h-6 w-6 text-primary" />
-                <span className="font-bold text-lg">IMAGINITIATE</span>
+              <div className="flex items-center space-x-3 mb-4">
+                <img src="/logo.png" alt="IMAGINITIATE Logo" className="h-10 w-auto" />
+                <span className="text-xl font-bold text-emerald-400">IMAGINITIATE</span>
               </div>
-              <p className="text-sm text-muted-foreground">
-                Fantasy Sports - Skill-based, educational, and completely free to play.
+              <p className="text-gray-400 text-sm">
+                India's most trusted fantasy cricket platform. Play responsibly and win big.
               </p>
             </div>
+
+            {/* Quick Links */}
             <div>
-              <h3 className="font-semibold mb-4">Company</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>IMAGINITIATE VENTURES PRIVATE LIMITED</li>
-                <li>A-96 GROUND FLOOR</li>
-                <li>SHANKAR GARDEN VIKASPURI</li>
-                <li>NEW DELHI, Delhi, 110018</li>
-              </ul>
+              <h3 className="text-white font-bold mb-4">Quick Links</h3>
+              <div className="flex flex-col space-y-2">
+                <Link href="/about"><a className="text-gray-400 hover:text-emerald-400 text-sm">About Us</a></Link>
+                <Link href="/how-it-works"><a className="text-gray-400 hover:text-emerald-400 text-sm">How It Works</a></Link>
+                <Link href="/fantasy-cricket"><a className="text-gray-400 hover:text-emerald-400 text-sm">Fantasy Cricket</a></Link>
+                <Link href="/contact"><a className="text-gray-400 hover:text-emerald-400 text-sm">Contact</a></Link>
+              </div>
             </div>
+
+            {/* Legal */}
             <div>
-              <h3 className="font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/about" className="text-muted-foreground hover:text-primary">About Us</Link></li>
-                <li><Link href="/how-it-works" className="text-muted-foreground hover:text-primary">How It Works</Link></li>
-                <li><Link href="/fantasy-cricket" className="text-muted-foreground hover:text-primary">Fantasy Cricket</Link></li>
-                <li><Link href="/matches" className="text-muted-foreground hover:text-primary">Matches</Link></li>
-                <li><Link href="/fair-play" className="text-muted-foreground hover:text-primary">Fair Play</Link></li>
-                <li><Link href="/contact" className="text-muted-foreground hover:text-primary">Contact Us</Link></li>
-              </ul>
+              <h3 className="text-white font-bold mb-4">Legal</h3>
+              <div className="flex flex-col space-y-2">
+                <Link href="/terms"><a className="text-gray-400 hover:text-emerald-400 text-sm">Terms & Conditions</a></Link>
+                <Link href="/privacy"><a className="text-gray-400 hover:text-emerald-400 text-sm">Privacy Policy</a></Link>
+                <Link href="/disclaimer"><a className="text-gray-400 hover:text-emerald-400 text-sm">Disclaimer</a></Link>
+                <Link href="/responsible-gaming"><a className="text-gray-400 hover:text-emerald-400 text-sm">Responsible Gaming</a></Link>
+              </div>
             </div>
+
+            {/* Social */}
             <div>
-              <h3 className="font-semibold mb-4">Legal</h3>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/terms" className="text-muted-foreground hover:text-primary">Terms & Conditions</Link></li>
-                <li><Link href="/privacy" className="text-muted-foreground hover:text-primary">Privacy Policy</Link></li>
-                <li><Link href="/disclaimer" className="text-muted-foreground hover:text-primary">Disclaimer</Link></li>
-                <li><Link href="/responsible-gaming" className="text-muted-foreground hover:text-primary">Responsible Gaming</Link></li>
-              </ul>
+              <h3 className="text-white font-bold mb-4">Follow Us</h3>
+              <div className="flex flex-col space-y-2">
+                <a href="#" className="text-gray-400 hover:text-emerald-400 text-sm">Facebook</a>
+                <a href="#" className="text-gray-400 hover:text-emerald-400 text-sm">Twitter</a>
+                <a href="#" className="text-gray-400 hover:text-emerald-400 text-sm">Instagram</a>
+                <a href="#" className="text-gray-400 hover:text-emerald-400 text-sm">YouTube</a>
+              </div>
             </div>
           </div>
-          <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-            <p>© 2024 IMAGINITIATE VENTURES PRIVATE LIMITED. All rights reserved.</p>
-            <p className="mt-2">imaginitiatesports.com - Free-to-play skill-based fantasy cricket platform.</p>
-            <div className="mt-6 p-4 bg-amber-50 dark:bg-amber-950/20 rounded-lg border border-amber-200 dark:border-amber-800">
-              <p className="text-amber-800 dark:text-amber-300 font-semibold mb-2">Important Disclaimers:</p>
-              <ul className="text-xs text-amber-700 dark:text-amber-400 space-y-1">
-                <li><strong>Age Restriction:</strong> This platform is strictly for users 18 years of age and above only.</li>
-                <li><strong>Geo-Restrictions:</strong> This platform is not available for users in the following Indian states: Assam, Telangana, Tamil Nadu, Orissa, Andhra Pradesh, Nagaland, and Sikkim.</li>
-                <li><strong>Legal Compliance:</strong> IMAGINITIATE operates in full compliance with Indian laws and regulations governing fantasy sports. We strictly follow all applicable Indian fantasy sports rules and regulations.</li>
-                <li><strong>Skill-Based Platform:</strong> This is a 100% free-to-play, skill-based educational platform. No monetary transactions are involved.</li>
-              </ul>
-            </div>
+
+          <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
+            <p>© 2025 IMAGINITIATE. All rights reserved. | imaginitiatesports.com</p>
+            <p className="mt-2 text-xs">18+ Only • Geo-Restricted: Assam, Telangana, Tamil Nadu, Orissa, Andhra Pradesh, Nagaland, Sikkim • India Compliant Fantasy Sports Regulations</p>
           </div>
         </div>
       </footer>
