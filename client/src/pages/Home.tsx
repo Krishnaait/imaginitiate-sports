@@ -17,40 +17,50 @@ export default function Home() {
       {/* Disclaimer Banner */}
       <DisclaimerBanner />
       
-      {/* Navigation */}
+      {/* Auto-Responsive Navigation */}
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-        <div className="container flex h-16 items-center justify-between">
+        <div className="container flex items-center justify-between" style={{ height: 'clamp(3.5rem, 10vw, 4rem)' }}>
           <Link href="/">
-            <div className="flex items-center gap-2 md:gap-3 cursor-pointer">
-              <img src="/logo.png" alt="IMAGINITIATE" className="h-8 md:h-12 w-auto" />
-              <span className="font-bold text-lg md:text-2xl text-primary">IMAGINITIATE</span>
+            <div className="flex items-center cursor-pointer" style={{ gap: 'clamp(0.5rem, 2vw, 0.75rem)' }}>
+              <img 
+                src="/logo.png" 
+                alt="IMAGINITIATE" 
+                className="w-auto"
+                style={{ height: 'clamp(2rem, 6vw, 3rem)' }}
+              />
+              <span 
+                className="font-bold text-primary"
+                style={{ fontSize: 'clamp(1.125rem, 3vw, 1.5rem)' }}
+              >
+                IMAGINITIATE
+              </span>
             </div>
           </Link>
           
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-4">
-            <Link href="/" className="text-sm font-medium hover:text-primary transition-colors">
+          {/* Desktop Navigation - Shows on large screens */}
+          <div className="hidden xl:flex items-center" style={{ gap: 'clamp(0.5rem, 1.5vw, 1rem)' }}>
+            <Link href="/" className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">
               Home
             </Link>
-            <Link href="/about" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link href="/about" className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">
               About Us
             </Link>
-            <Link href="/how-it-works" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link href="/how-it-works" className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">
               How It Works
             </Link>
-            <Link href="/responsible-gaming" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link href="/responsible-gaming" className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">
               Responsible Gaming
             </Link>
-            <a href="#faq" className="text-sm font-medium hover:text-primary transition-colors">
+            <a href="#faq" className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">
               FAQs
             </a>
-            <Link href="/fair-play" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link href="/fair-play" className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">
               Fair Play
             </Link>
-            <Link href="/matches" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link href="/matches" className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">
               Matches
             </Link>
-            <Link href="/contact" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link href="/contact" className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap">
               Contact Us
             </Link>
             {isAuthenticated ? (
@@ -69,9 +79,9 @@ export default function Home() {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Shows on smaller screens */}
           <button
-            className="lg:hidden p-2"
+            className="xl:hidden p-2 rounded-md hover:bg-accent transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -81,60 +91,75 @@ export default function Home() {
 
         {/* Mobile Navigation Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t bg-background">
-            <div className="container py-4 flex flex-col gap-3">
+          <div className="xl:hidden border-t bg-background">
+            <div 
+              className="container flex flex-col"
+              style={{ 
+                gap: 'clamp(0.5rem, 2vw, 0.75rem)',
+                paddingTop: 'clamp(1rem, 3vw, 1.5rem)',
+                paddingBottom: 'clamp(1rem, 3vw, 1.5rem)'
+              }}
+            >
               <Link 
                 href="/" 
-                className="text-sm font-medium hover:text-primary transition-colors py-2"
+                className="text-sm font-medium hover:text-primary transition-colors"
+                style={{ padding: 'clamp(0.5rem, 2vw, 0.75rem) 0' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 href="/about" 
-                className="text-sm font-medium hover:text-primary transition-colors py-2"
+                className="text-sm font-medium hover:text-primary transition-colors"
+                style={{ padding: 'clamp(0.5rem, 2vw, 0.75rem) 0' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 About Us
               </Link>
               <Link 
                 href="/how-it-works" 
-                className="text-sm font-medium hover:text-primary transition-colors py-2"
+                className="text-sm font-medium hover:text-primary transition-colors"
+                style={{ padding: 'clamp(0.5rem, 2vw, 0.75rem) 0' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 How It Works
               </Link>
               <Link 
                 href="/responsible-gaming" 
-                className="text-sm font-medium hover:text-primary transition-colors py-2"
+                className="text-sm font-medium hover:text-primary transition-colors"
+                style={{ padding: 'clamp(0.5rem, 2vw, 0.75rem) 0' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Responsible Gaming
               </Link>
               <a 
                 href="#faq" 
-                className="text-sm font-medium hover:text-primary transition-colors py-2"
+                className="text-sm font-medium hover:text-primary transition-colors"
+                style={{ padding: 'clamp(0.5rem, 2vw, 0.75rem) 0' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 FAQs
               </a>
               <Link 
                 href="/fair-play" 
-                className="text-sm font-medium hover:text-primary transition-colors py-2"
+                className="text-sm font-medium hover:text-primary transition-colors"
+                style={{ padding: 'clamp(0.5rem, 2vw, 0.75rem) 0' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Fair Play
               </Link>
               <Link 
                 href="/matches" 
-                className="text-sm font-medium hover:text-primary transition-colors py-2"
+                className="text-sm font-medium hover:text-primary transition-colors"
+                style={{ padding: 'clamp(0.5rem, 2vw, 0.75rem) 0' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Matches
               </Link>
               <Link 
                 href="/contact" 
-                className="text-sm font-medium hover:text-primary transition-colors py-2"
+                className="text-sm font-medium hover:text-primary transition-colors"
+                style={{ padding: 'clamp(0.5rem, 2vw, 0.75rem) 0' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact Us
