@@ -22,15 +22,11 @@ export default function Home() {
             <a href="#features" className="text-sm font-medium hover:text-primary transition-colors">
               Features
             </a>
-            <Link href="/how-it-works">
-              <a className="text-sm font-medium hover:text-primary transition-colors">
-                How It Works
-              </a>
+            <Link href="/how-it-works" className="text-sm font-medium hover:text-primary transition-colors">
+              How It Works
             </Link>
-            <Link href="/matches">
-              <a className="text-sm font-medium hover:text-primary transition-colors">
-                Matches
-              </a>
+            <Link href="/matches" className="text-sm font-medium hover:text-primary transition-colors">
+              Matches
             </Link>
             <a href="#faq" className="text-sm font-medium hover:text-primary transition-colors">
               FAQ

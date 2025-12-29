@@ -75,3 +75,4 @@
 
 ## Bug Fixes
 - [x] Fix pages not displaying - investigate routing and navigation issues
+- [x] Fix nested anchor tag error in Home.tsx
