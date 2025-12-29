@@ -5,12 +5,21 @@ import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, decimal } from "d
  */
 export const users = mysqlTable("users", {
   id: int("id").autoincrement().primaryKey(),
-  openId: varchar("openId", { length: 64 }).notNull().unique(),
-  name: text("name"),
-  email: varchar("email", { length: 320 }),
-  loginMethod: varchar("loginMethod", { length: 64 }),
+  // Custom authentication fields
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  password: varchar("password", { length: 255 }).notNull(), // Hashed password
+  name: varchar("name", { length: 255 }).notNull(),
+  dateOfBirth: timestamp("dateOfBirth").notNull(), // For 18+ validation
+  state: varchar("state", { length: 100 }).notNull(), // For geo-restriction validation
+  // Legacy OAuth field (nullable for migration)
+  openId: varchar("openId", { length: 64 }).unique(),
+  loginMethod: varchar("loginMethod", { length: 64 }).default("email"),
   role: mysqlEnum("role", ["user", "admin"]).default("user").notNull(),
   skillPoints: int("skillPoints").default(0).notNull(),
+  // Password reset fields
+  resetToken: varchar("resetToken", { length: 255 }),
+  resetTokenExpiry: timestamp("resetTokenExpiry"),
+  // Timestamps
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(),

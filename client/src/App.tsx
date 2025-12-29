@@ -21,6 +21,9 @@ import Contests from "./pages/Contests";
 import MyTeams from "./pages/MyTeams";
 import Results from "./pages/Results";
 import Profile from "./pages/Profile";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -43,6 +46,9 @@ function Router() {
       <Route path={"/my-teams"} component={MyTeams} />
       <Route path={"/results"} component={Results} />
       <Route path={"/profile"} component={Profile} />
+      <Route path={"/login"} component={Login} />
+      <Route path={"/register"} component={Register} />
+      <Route path={"/forgot-password"} component={ForgotPassword} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

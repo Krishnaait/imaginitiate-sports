@@ -15,6 +15,13 @@
       "when": 1767016463320,
       "tag": "0001_groovy_skreet",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1767024821197,
+      "tag": "0002_lazy_silver_centurion",
+      "breakpoints": true
     }
   ]
 }

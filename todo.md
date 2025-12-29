@@ -83,3 +83,18 @@
 - [x] Add geo-restriction disclaimer for 7 Indian states (Assam, Telangana, Tamil Nadu, Orissa, Andhra Pradesh, Nagaland, Sikkim)
 - [x] Add Indian compliance disclaimer (operates under Indian laws and fantasy sports regulations)
 - [x] Apply disclaimers to all pages across the website
+
+## Custom Authentication Implementation
+- [ ] Remove Manus OAuth dependencies and references
+- [x] Update database schema to add password, dateOfBirth, state fields
+- [x] Implement password hashing (bcrypt)
+- [x] Create registration endpoint with validation (18+, geo-restrictions)
+- [x] Create login endpoint with JWT token generation
+- [x] Create forgot password endpoint
+- [x] Create password reset endpoint
+- [x] Build custom Login page
+- [x] Build custom Register page with age and state validation
+- [x] Build Forgot Password page
+- [x] Update authentication context to use custom auth
+- [x] Remove all Manus OAuth references from codebase
+- [x] Test complete authentication flow
