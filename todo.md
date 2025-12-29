@@ -174,13 +174,29 @@
 
 
 ## Phase 3: Team Creation UI Implementation
-- [ ] Update CreateTeam page with functional team builder
-- [ ] Fetch match squad data from tRPC
-- [ ] Implement player selection with role filtering
-- [ ] Add credit system (100 credits budget)
-- [ ] Add captain and vice-captain selection
-- [ ] Implement team composition validation
-- [ ] Add multi-step wizard (Select Players → Captain → Preview)
-- [ ] Connect to teams.create tRPC mutation
-- [ ] Add success/error toast notifications
+- [x] Update CreateTeam page with functional team builder
+- [x] Fetch match squad data from tRPC (trpc.matches.squad)
+- [x] Implement player selection with role filtering (WK/BAT/AR/BOWL)
+- [x] Add credit system (100 credits budget with real-time tracking)
+- [x] Add captain and vice-captain selection with visual badges
+- [x] Implement team composition validation (1-4 WK, 3-6 BAT, 1-4 AR, 3-6 BOWL)
+- [x] Connect to teams.create tRPC mutation
+- [x] Add success/error toast notifications
+- [x] Add loading states and error handling
+- [x] Add team name input field
 - [ ] Test complete team creation flow
+
+
+## Phase 4: Contest System Implementation
+- [x] Update Matches page to show available contests
+- [x] Add Create Team and View Contests buttons to match cards
+- [x] Update Contests page to fetch real data from tRPC
+- [x] Fetch contests list from tRPC (contests.list)
+- [x] Display contest details (entry fee, prize pool, spots filled)
+- [x] Implement join contest functionality with team selection dialog
+- [x] Connect to contests.join tRPC mutation
+- [x] Add contest entry success/error handling with toasts
+- [x] Show user's teams for contest selection
+- [x] Add routes for /create-team/:id and /contests/:id
+- [x] Add progress bars showing contest fill percentage
+- [ ] Test complete contest flow end-to-end

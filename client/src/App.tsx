@@ -41,7 +41,9 @@ function Router() {
       <Route path={"/disclaimer"} component={Disclaimer} />
       <Route path={"/matches"} component={Matches} />
       <Route path={"/dashboard"} component={Dashboard} />
+      <Route path={"/create-team/:id"} component={CreateTeam} />
       <Route path={"/create-team"} component={CreateTeam} />
+      <Route path={"/contests/:id"} component={Contests} />
       <Route path={"/contests"} component={Contests} />
       <Route path={"/my-teams"} component={MyTeams} />
       <Route path={"/results"} component={Results} />

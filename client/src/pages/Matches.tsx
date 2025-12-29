@@ -99,13 +99,17 @@ export default function Matches() {
         <div className="flex gap-2">
           {isAuthenticated ? (
             <>
-              <Button className="flex-1" size="sm">
-                <Users className="h-4 w-4 mr-2" />
-                Create Team
-              </Button>
-              <Button variant="outline" size="sm">
-                <ArrowRight className="h-4 w-4" />
-              </Button>
+              <Link href={`/create-team/${match.id}`} className="flex-1">
+                <Button className="w-full" size="sm">
+                  <Users className="h-4 w-4 mr-2" />
+                  Create Team
+                </Button>
+              </Link>
+              <Link href={`/contests/${match.id}`}>
+                <Button variant="outline" size="sm" title="View Contests">
+                  <Trophy className="h-4 w-4" />
+                </Button>
+              </Link>
             </>
           ) : (
             <a href={getLoginUrl()} className="w-full">

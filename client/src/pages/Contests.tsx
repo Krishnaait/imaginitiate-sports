@@ -1,72 +1,71 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Trophy, Users, Clock, Target, TrendingUp } from "lucide-react";
-import { Link } from "wouter";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Trophy, Users, Clock, Target, TrendingUp, Loader2, ArrowLeft } from "lucide-react";
+import { Link, useParams, useLocation } from "wouter";
+import { useState } from "react";
 import { toast } from "sonner";
-
-const mockContests = [
-  {
-    id: 1,
-    name: "Mega Contest",
-    match: "India vs Pakistan",
-    totalSpots: 10000,
-    filledSpots: 7543,
-    skillPoints: 1000,
-    type: "Public",
-    startTime: "Tomorrow 7:00 PM",
-  },
-  {
-    id: 2,
-    name: "Practice Contest",
-    match: "India vs Pakistan",
-    totalSpots: 5000,
-    filledSpots: 3210,
-    skillPoints: 500,
-    type: "Public",
-    startTime: "Tomorrow 7:00 PM",
-  },
-  {
-    id: 3,
-    name: "Beginners Special",
-    match: "India vs Pakistan",
-    totalSpots: 2000,
-    filledSpots: 1850,
-    skillPoints: 300,
-    type: "Public",
-    startTime: "Tomorrow 7:00 PM",
-  },
-  {
-    id: 4,
-    name: "Expert Challenge",
-    match: "India vs Pakistan",
-    totalSpots: 500,
-    filledSpots: 420,
-    skillPoints: 2000,
-    type: "Public",
-    startTime: "Tomorrow 7:00 PM",
-  },
-  {
-    id: 5,
-    name: "Friends League",
-    match: "India vs Pakistan",
-    totalSpots: 50,
-    filledSpots: 12,
-    skillPoints: 200,
-    type: "Private",
-    startTime: "Tomorrow 7:00 PM",
-    code: "FRIENDS2024",
-  },
-];
+import { trpc } from "@/lib/trpc";
 
 export default function Contests() {
-  const handleJoinContest = (contestId: number) => {
-    toast.success("Successfully joined the contest!");
+  const params = useParams();
+  const [, navigate] = useLocation();
+  const matchId = params.id || "";
+  const [selectedContest, setSelectedContest] = useState<any>(null);
+  const [selectedTeamId, setSelectedTeamId] = useState<number | null>(null);
+
+  // Fetch contests for this match (or all if no matchId)
+  const { data: contests, isLoading: contestsLoading } = trpc.contests.list.useQuery(
+    matchId ? { matchId } : {}
+  );
+
+  // Fetch user's teams
+  const { data: myTeams, isLoading: teamsLoading } = trpc.teams.myTeams.useQuery();
+
+  // Join contest mutation
+  const joinContestMutation = trpc.contests.join.useMutation({
+    onSuccess: () => {
+      toast.success("Successfully joined contest!");
+      setSelectedContest(null);
+      setSelectedTeamId(null);
+    },
+    onError: (error) => {
+      toast.error(error.message || "Failed to join contest");
+    },
+  });
+
+  const handleJoinContest = () => {
+    if (!selectedTeamId) {
+      toast.error("Please select a team");
+      return;
+    }
+    if (!selectedContest) return;
+
+    joinContestMutation.mutate({
+      contestId: selectedContest.id,
+      teamId: selectedTeamId,
+    });
   };
 
   const handleCreatePrivate = () => {
     toast.info("Feature coming soon: Create your own private contest!");
   };
+
+  if (contestsLoading || teamsLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4" />
+          <p className="text-muted-foreground">Loading contests...</p>
+        </div>
+      </div>
+    );
+  }
+
+  const availableTeams = matchId
+    ? myTeams?.filter((team: any) => team.matchId === matchId) || []
+    : myTeams || [];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -80,14 +79,11 @@ export default function Contests() {
             </div>
           </Link>
           <div className="flex items-center gap-4">
-            <Link href="/dashboard">
-              <Button variant="ghost">Dashboard</Button>
+            <Link href="/matches">
+              <Button variant="ghost">Matches</Button>
             </Link>
             <Link href="/my-teams">
               <Button variant="ghost">My Teams</Button>
-            </Link>
-            <Link href="/create-team">
-              <Button>Create Team</Button>
             </Link>
           </div>
         </div>
@@ -95,12 +91,26 @@ export default function Contests() {
 
       {/* Header */}
       <section className="bg-primary text-primary-foreground py-12">
-        <div className="container text-center">
-          <Trophy className="h-16 w-16 mx-auto mb-4" />
-          <h1 className="text-4xl font-bold mb-4">Join Contests</h1>
-          <p className="text-xl opacity-90">
-            Compete with other cricket enthusiasts and test your skills
-          </p>
+        <div className="container">
+          {matchId && (
+            <Link href="/matches">
+              <Button variant="ghost" size="sm" className="mb-4 text-primary-foreground hover:text-primary-foreground/80">
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Back to Matches
+              </Button>
+            </Link>
+          )}
+          <div className="text-center">
+            <Trophy className="h-16 w-16 mx-auto mb-4" />
+            <h1 className="text-4xl font-bold mb-4">
+              {matchId ? "Match Contests" : "Join Contests"}
+            </h1>
+            <p className="text-xl opacity-90">
+              {matchId
+                ? `Contests for Match ID: ${matchId}`
+                : "Compete with other cricket enthusiasts and test your skills"}
+            </p>
+          </div>
         </div>
       </section>
 
@@ -118,8 +128,8 @@ export default function Contests() {
             <Card>
               <CardContent className="pt-6 text-center">
                 <Trophy className="h-8 w-8 text-primary mx-auto mb-2" />
-                <div className="text-2xl font-bold">50+</div>
-                <div className="text-sm text-muted-foreground">Live Contests</div>
+                <div className="text-2xl font-bold">{contests?.length || 0}</div>
+                <div className="text-sm text-muted-foreground">Available Contests</div>
               </CardContent>
             </Card>
             <Card>
@@ -145,89 +155,187 @@ export default function Contests() {
         <div className="container max-w-5xl">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold">Available Contests</h2>
-            <Button onClick={handleCreatePrivate}>
-              Create Private Contest
-            </Button>
+            <Button onClick={handleCreatePrivate}>Create Private Contest</Button>
           </div>
 
-          <div className="space-y-6">
-            {mockContests.map((contest) => {
-              const fillPercentage = (contest.filledSpots / contest.totalSpots) * 100;
-              const spotsLeft = contest.totalSpots - contest.filledSpots;
+          {!contests || contests.length === 0 ? (
+            <Card>
+              <CardContent className="pt-12 pb-12 text-center">
+                <Trophy className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2">No Contests Available</h3>
+                <p className="text-muted-foreground mb-6">
+                  {matchId
+                    ? "Contests for this match haven't been created yet."
+                    : "No contests are currently available. Check back soon!"}
+                </p>
+                <Link href="/matches">
+                  <Button>Browse Matches</Button>
+                </Link>
+              </CardContent>
+            </Card>
+          ) : (
+            <div className="space-y-6">
+              {contests.map((contest: any) => {
+                const fillPercentage = (contest.currentEntries / contest.maxEntries) * 100;
+                const spotsLeft = contest.maxEntries - contest.currentEntries;
 
-              return (
-                <Card key={contest.id} className="hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <CardTitle className="flex items-center gap-2 mb-2">
-                          {contest.name}
-                          <Badge variant={contest.type === "Public" ? "default" : "secondary"}>
-                            {contest.type}
-                          </Badge>
-                        </CardTitle>
-                        <p className="text-muted-foreground">{contest.match}</p>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-2xl font-bold text-primary">{contest.skillPoints}</div>
-                        <div className="text-sm text-muted-foreground">Skill Points</div>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      {/* Progress Bar */}
-                      <div>
-                        <div className="flex justify-between text-sm mb-2">
-                          <span className="text-muted-foreground">
-                            {contest.filledSpots.toLocaleString()} / {contest.totalSpots.toLocaleString()} spots filled
-                          </span>
-                          <span className="font-semibold">
-                            {spotsLeft.toLocaleString()} spots left
-                          </span>
+                return (
+                  <Card key={contest.id} className="hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <CardTitle className="flex items-center gap-2 mb-2">
+                            {contest.name}
+                            <Badge variant="default">Public</Badge>
+                            {fillPercentage >= 80 && (
+                              <Badge variant="destructive">Filling Fast!</Badge>
+                            )}
+                          </CardTitle>
+                          <p className="text-muted-foreground">Match ID: {contest.matchId}</p>
                         </div>
-                        <div className="w-full bg-muted rounded-full h-2">
-                          <div
-                            className="bg-primary h-2 rounded-full transition-all"
-                            style={{ width: `${fillPercentage}%` }}
-                          />
+                        <div className="text-right">
+                          <div className="text-2xl font-bold text-primary">Free</div>
+                          <div className="text-sm text-muted-foreground">Entry</div>
                         </div>
                       </div>
-
-                      {/* Contest Details */}
-                      <div className="flex flex-wrap gap-4 text-sm">
-                        <div className="flex items-center gap-2">
-                          <Clock className="h-4 w-4 text-muted-foreground" />
-                          <span>{contest.startTime}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Users className="h-4 w-4 text-muted-foreground" />
-                          <span>{contest.totalSpots.toLocaleString()} max entries</span>
-                        </div>
-                        {contest.type === "Private" && contest.code && (
-                          <div className="flex items-center gap-2">
-                            <Badge variant="outline">Code: {contest.code}</Badge>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        {/* Progress Bar */}
+                        <div>
+                          <div className="flex justify-between text-sm mb-2">
+                            <span className="text-muted-foreground">
+                              {contest.currentEntries} / {contest.maxEntries} spots filled
+                            </span>
+                            <span className="font-semibold">{spotsLeft} spots left</span>
                           </div>
-                        )}
-                      </div>
+                          <div className="w-full bg-muted rounded-full h-2">
+                            <div
+                              className="bg-primary h-2 rounded-full transition-all"
+                              style={{ width: `${fillPercentage}%` }}
+                            />
+                          </div>
+                        </div>
 
-                      {/* Action Button */}
-                      <div className="flex gap-3">
-                        <Button
-                          className="flex-1"
-                          onClick={() => handleJoinContest(contest.id)}
-                          disabled={spotsLeft === 0}
-                        >
-                          {spotsLeft === 0 ? "Contest Full" : "Join Contest"}
-                        </Button>
-                        <Button variant="outline">View Details</Button>
+                        {/* Contest Details */}
+                        <div className="flex flex-wrap gap-4 text-sm">
+                          <div className="flex items-center gap-2">
+                            <Users className="h-4 w-4 text-muted-foreground" />
+                            <span>{contest.maxEntries} max entries</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Trophy className="h-4 w-4 text-muted-foreground" />
+                            <span>Practice Contest</span>
+                          </div>
+                        </div>
+
+                        {/* Action Button */}
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button
+                              className="w-full"
+                              disabled={spotsLeft === 0}
+                              onClick={() => setSelectedContest(contest)}
+                            >
+                              {spotsLeft === 0 ? "Contest Full" : "Join Contest"}
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent>
+                            <DialogHeader>
+                              <DialogTitle>Select Your Team</DialogTitle>
+                              <DialogDescription>
+                                Choose a team to join {contest.name}
+                              </DialogDescription>
+                            </DialogHeader>
+                            <div className="space-y-4 mt-4">
+                              {availableTeams.length === 0 ? (
+                                <div className="text-center py-8">
+                                  <Target className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                                  <p className="text-muted-foreground mb-4">
+                                    You don't have any teams for this match yet.
+                                  </p>
+                                  <Link href={matchId ? `/create-team/${matchId}` : "/matches"}>
+                                    <Button>
+                                      {matchId ? "Create Team" : "Browse Matches"}
+                                    </Button>
+                                  </Link>
+                                </div>
+                              ) : (
+                                <>
+                                  <div className="space-y-2 max-h-[400px] overflow-y-auto">
+                                    {availableTeams.map((team: any) => (
+                                      <div
+                                        key={team.id}
+                                        className={`p-4 border rounded-lg cursor-pointer transition-colors ${
+                                          selectedTeamId === team.id
+                                            ? "bg-primary/10 border-primary"
+                                            : "hover:bg-muted/50"
+                                        }`}
+                                        onClick={() => setSelectedTeamId(team.id)}
+                                      >
+                                        <div className="flex items-center justify-between">
+                                          <div>
+                                            <div className="font-semibold">{team.name}</div>
+                                            <div className="text-sm text-muted-foreground">
+                                              Created{" "}
+                                              {new Date(team.createdAt).toLocaleDateString()}
+                                            </div>
+                                          </div>
+                                          <input
+                                            type="radio"
+                                            checked={selectedTeamId === team.id}
+                                            onChange={() => setSelectedTeamId(team.id)}
+                                            className="h-5 w-5"
+                                          />
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                  <Button
+                                    className="w-full"
+                                    onClick={handleJoinContest}
+                                    disabled={!selectedTeamId || joinContestMutation.isPending}
+                                  >
+                                    {joinContestMutation.isPending ? (
+                                      <>
+                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                        Joining...
+                                      </>
+                                    ) : (
+                                      "Confirm & Join"
+                                    )}
+                                  </Button>
+                                </>
+                              )}
+                            </div>
+                          </DialogContent>
+                        </Dialog>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Create Team CTA */}
+          {contests && contests.length > 0 && availableTeams.length === 0 && matchId && (
+            <Card className="mt-8 bg-primary/5 border-primary/20">
+              <CardContent className="pt-6 text-center">
+                <Target className="h-12 w-12 text-primary mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Create Your Team First</h3>
+                <p className="text-muted-foreground mb-6">
+                  You need to create a team for this match before joining contests.
+                </p>
+                <Link href={`/create-team/${matchId}`}>
+                  <Button size="lg">
+                    <Users className="mr-2 h-5 w-5" />
+                    Create Team Now
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          )}
         </div>
       </section>
 
@@ -243,7 +351,8 @@ export default function Contests() {
                 </div>
                 <h3 className="font-semibold mb-2">Create Your Team</h3>
                 <p className="text-sm text-muted-foreground">
-                  Select 11 players within the 100-credit budget and choose your captain and vice-captain
+                  Select 11 players within the 100-credit budget and choose your captain and
+                  vice-captain
                 </p>
               </CardContent>
             </Card>
