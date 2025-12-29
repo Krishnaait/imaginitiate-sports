@@ -5,12 +5,16 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { getLoginUrl } from "@/const";
 import { Trophy, Users, Brain, Shield, TrendingUp, Target, CheckCircle2, AlertCircle } from "lucide-react";
 import { Link } from "wouter";
+import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 
 export default function Home() {
   const { user, isAuthenticated } = useAuth();
 
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Disclaimer Banner */}
+      <DisclaimerBanner />
+      
       {/* Navigation */}
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container flex h-16 items-center justify-between">
@@ -18,27 +22,44 @@ export default function Home() {
             <Trophy className="h-6 w-6 text-primary" />
             <span className="font-bold text-xl">IMAGINITIATE</span>
           </div>
-          <div className="flex items-center gap-6">
-            <a href="#features" className="text-sm font-medium hover:text-primary transition-colors">
-              Features
-            </a>
+          <div className="flex items-center gap-4">
+            <Link href="/" className="text-sm font-medium hover:text-primary transition-colors">
+              Home
+            </Link>
+            <Link href="/about" className="text-sm font-medium hover:text-primary transition-colors">
+              About Us
+            </Link>
             <Link href="/how-it-works" className="text-sm font-medium hover:text-primary transition-colors">
               How It Works
+            </Link>
+            <Link href="/responsible-gaming" className="text-sm font-medium hover:text-primary transition-colors">
+              Responsible Gaming
+            </Link>
+            <a href="#faq" className="text-sm font-medium hover:text-primary transition-colors">
+              FAQs
+            </a>
+            <Link href="/fair-play" className="text-sm font-medium hover:text-primary transition-colors">
+              Fair Play
             </Link>
             <Link href="/matches" className="text-sm font-medium hover:text-primary transition-colors">
               Matches
             </Link>
-            <a href="#faq" className="text-sm font-medium hover:text-primary transition-colors">
-              FAQ
-            </a>
+            <Link href="/contact" className="text-sm font-medium hover:text-primary transition-colors">
+              Contact Us
+            </Link>
             {isAuthenticated ? (
               <Link href="/dashboard">
-                <Button>Dashboard</Button>
+                <Button size="sm">Dashboard</Button>
               </Link>
             ) : (
-              <a href={getLoginUrl()}>
-                <Button>Get Started</Button>
-              </a>
+              <>
+                <a href={getLoginUrl()}>
+                  <Button size="sm" variant="outline">Login</Button>
+                </a>
+                <a href={getLoginUrl()}>
+                  <Button size="sm">Register</Button>
+                </a>
+              </>
             )}
           </div>
         </div>
@@ -497,6 +518,15 @@ export default function Home() {
           <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
             <p>© 2024 IMAGINITIATE VENTURES PRIVATE LIMITED. All rights reserved.</p>
             <p className="mt-2">imanitiatesports.com - Free-to-play skill-based fantasy cricket platform.</p>
+            <div className="mt-6 p-4 bg-amber-50 dark:bg-amber-950/20 rounded-lg border border-amber-200 dark:border-amber-800">
+              <p className="text-amber-800 dark:text-amber-300 font-semibold mb-2">Important Disclaimers:</p>
+              <ul className="text-xs text-amber-700 dark:text-amber-400 space-y-1">
+                <li><strong>Age Restriction:</strong> This platform is strictly for users 18 years of age and above only.</li>
+                <li><strong>Geo-Restrictions:</strong> This platform is not available for users in the following Indian states: Assam, Telangana, Tamil Nadu, Orissa, Andhra Pradesh, Nagaland, and Sikkim.</li>
+                <li><strong>Legal Compliance:</strong> IMAGINITIATE operates in full compliance with Indian laws and regulations governing fantasy sports. We strictly follow all applicable Indian fantasy sports rules and regulations.</li>
+                <li><strong>Skill-Based Platform:</strong> This is a 100% free-to-play, skill-based educational platform. No monetary transactions are involved.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </footer>

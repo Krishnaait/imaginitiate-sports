@@ -76,3 +76,10 @@
 ## Bug Fixes
 - [x] Fix pages not displaying - investigate routing and navigation issues
 - [x] Fix nested anchor tag error in Home.tsx
+
+## Navigation & Compliance Updates
+- [x] Update navigation bar sequence: Home → About Us → How it Works → Responsible Gaming → FAQs → Fair Play → Matches → Contact Us → Login → Register
+- [x] Add age restriction disclaimer (18+ only) to header and footer
+- [x] Add geo-restriction disclaimer for 7 Indian states (Assam, Telangana, Tamil Nadu, Orissa, Andhra Pradesh, Nagaland, Sikkim)
+- [x] Add Indian compliance disclaimer (operates under Indian laws and fantasy sports regulations)
+- [x] Apply disclaimers to all pages across the website

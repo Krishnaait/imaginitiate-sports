@@ -7,6 +7,7 @@ import { Trophy, Mail, MapPin, Phone, Send } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
 import { toast } from "sonner";
+import { Layout } from "@/components/Layout";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -37,30 +38,8 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <Layout>
       {/* Navigation */}
-      <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-        <div className="container flex h-16 items-center justify-between">
-          <Link href="/">
-            <div className="flex items-center gap-2 cursor-pointer">
-              <Trophy className="h-6 w-6 text-primary" />
-              <span className="font-bold text-xl">IMAGINITIATE</span>
-            </div>
-          </Link>
-          <div className="flex items-center gap-4">
-            <Link href="/">
-              <Button variant="ghost">Home</Button>
-            </Link>
-            <Link href="/matches">
-              <Button variant="ghost">Matches</Button>
-            </Link>
-            <Link href="/dashboard">
-              <Button>Dashboard</Button>
-            </Link>
-          </div>
-        </div>
-      </nav>
-
       {/* Header */}
       <section className="bg-primary text-primary-foreground py-16">
         <div className="container text-center">
@@ -258,6 +237,6 @@ export default function Contact() {
           <p className="mt-2">imanitiatesports.com</p>
         </div>
       </footer>
-    </div>
+    </Layout>
   );
 }
